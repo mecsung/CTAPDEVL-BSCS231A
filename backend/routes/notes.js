@@ -15,15 +15,15 @@ router.get('/:id', (req, res) => {
     res.json({ message: `requested note with ID: ${id}`});
 });
 
-//Create a new note
+// Create a new note
 router.post('/', async(req, res) => {
    const { title, content } = req.body;
    try{
         const note = await Note.create({ title, content});
         res.status(200).json(note);
    }
-   catch (error) {
-        resizeTo.status(400).json({ error: error.message});
+catch (error) {
+        res.status(400).json({ error: error.message});
    }
    res.json({message: 'Note created'});
 });
