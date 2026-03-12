@@ -6,12 +6,7 @@ const mongoose = require('mongoose');
 
 const notesRoutes = require('./routes/notes');
 
-// const uri = process.env.MONGO_URI;
-// if (!uri) {
-//     console.error('MongoDB URI is not defined in the environment variables.');
-//     process.exit(1);
-// }
-//Instance of express
+
 const app = express();
 app.use(express.json());
 
