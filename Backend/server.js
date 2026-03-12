@@ -1,16 +1,25 @@
-require('dotenv').config();
-const express = require('express')
+require("dotenv").config();
 
-const notesRouter = require('./routes/notes');
+const express = require("express");
+const notesrouter = require("./routes/notes");
+const mongoose = require("mongoose");
+
 const app = express();
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method);
-    next();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json()); // middleware to read JSON
+
+app.use("/api/notes", notesrouter); // connect router under /api/notes
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+    console.log("MongoDB connected successfully");
+    app.listen(PORT, () => {
+        console.log(`Server and Database are running on port ${PORT}`);
+    });
+})
+.catch((err) => {
+    console.error("MongoDB connection error:", err);
 });
-
-app.use('/api/notes', notesRouter);
-
-app.listen(process.env.PORT, () => [
-    console.log('Server is running on port 3000!!!', process.env.PORT)
-]);
