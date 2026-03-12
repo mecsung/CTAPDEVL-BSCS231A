@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 
 app.use('/api/notes', notesRoutes);
 
+//Database
 mongoose.connect(process.env.MONGO_URI).then(() => {
     app.listen(process.env.PORT, () => {
         console.log('Server and database are running on port', process.env.PORT);
