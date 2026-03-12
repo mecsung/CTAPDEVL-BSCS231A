@@ -1,4 +1,5 @@
 const express = require('express');
+const Note = require('../models/noteModel');
 
 const router = express.Router();
 
@@ -7,6 +8,7 @@ router.get('/', (req, res) => {
     res.send('Notes route');
 });
 
+
 //get single note
 router.get('/:id', (req, res) => {
     const {id} = req.params;
@@ -14,25 +16,29 @@ router.get('/:id', (req, res) => {
 });
 
 //Create a new note
-router.post('/', (req, res) => {
-    res.json({ message: 'Note created successfully' });
+router.post('/', async(req, res) => {
+   const { title, content } = req.body;
+   try{
+        const note = await Note.create({ title, content});
+        res.status(200).json(note);
+   }
+   catch (error) {
+        resizeTo.status(400).json({ error: error.message});
+   }
+   res.json({message: 'Note created'});
 });
 
-//post create a new note
-router.post('/', (req, res) => {
-    res.json({ message: 'Note created successfully' });
-});
 
-//delete a note
-router.delete('/:id', (req, res) => {
-    const {id} = req.params;
-    res.json({ message: `Note with ID: ${id} deleted successfully` });
-});
+// //delete a note
+// router.delete('/:id', (req, res) => {
+//     const {id} = req.params;
+//     res.json({ message: `Note with ID: ${id} deleted successfully` });
+// });
 
-//update a note
-router.patch('/:id', (req, res) => {
-    const {id} = req.params;
-    res.json({ message: `Note with ID: ${id} updated successfully` });
-})
+// //update a note
+// router.patch('/:id', (req, res) => {
+//     const {id} = req.params;
+//     res.json({ message: `Note with ID: ${id} updated successfully` });
+// })
 
 module.exports = router;
