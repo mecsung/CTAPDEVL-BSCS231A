@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Note = require("../models/noteModel")
 
 router.get("/", (req, res) => {
   res.json({
@@ -15,12 +16,17 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
-  res.json({
-    message: "Note created successfully!",
-    note: req.body.note,
-    date: new Date().toISOString().split('T')[0],
-  });
+router.post("/", async (req, res) => {
+  const { title, content } = req.body;
+
+  try {
+    const note = await Note.create({ title, content });
+    res.status(200).json(note);
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+
+  res.json({ message: "Note created Succesfully" })
 });
 
 router.patch("/:id", (req, res) => {
