@@ -3,12 +3,25 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    //    res.send('Hello World');
-    res.json({
-        message: 'Hello World',
-        name: 'John Doe',
-        age: 67
-    });
-})
+res.json({ message: 'Welcome to the Notes API' });
+});
 
+router.get('/:id', (req, res) => {
+const{ id } = req.params;
+res.json({ message: `You requested note with id: ${id}` });
+});
+
+router.post('/', (req, res) => {
+res.json({ message: 'Note created successfully' });
+});
+
+router.delete('/:id', (req, res) => {
+const{ id } = req.params;
+res.json({ message: `Note with id: ${id} deleted successfully!` });
+});
+
+router.patch('/:id', (req, res) => {
+const{ id } = req.params;
+res.json({ message: `Note with id: ${id} updated successfully!` });
+});
 module.exports = router;
