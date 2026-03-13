@@ -1,4 +1,3 @@
-
 //#region 1
 
 // Import the Express module
@@ -90,6 +89,17 @@ app.use('/api/notes', notesRoutes);
 // and JavaScript-friendly features to your MongoDB database
 const mongoose = require('mongoose');
 
+// Imports the promises-based version of Node.js's DNS module
+// This allows us to perform DNS lookups using promises, 
+// which can be more convenient than using callbacks
+const dns = require("node:dns/promises");
+
+// Configures the DNS servers that Node.js will use for all subsequent DNS lookups
+// This is important if your PC is connected to your mobile hotspot,
+// Mobile DNS carrier is unreliable, so we set it to Cloudflare and Google DNS for better performance,
+// and reliability
+dns.setServers(["1.1.1.1", "8.8.8.8"]); // Cloudflare + Google DNS
+
 // Connect to MongoDB then starts the server if successful
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -101,5 +111,5 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error) => {
         console.error('Error connecting to MongoDB:', error);
     });
-
+    
 //#endregion
