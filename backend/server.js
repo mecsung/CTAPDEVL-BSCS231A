@@ -82,3 +82,24 @@ const notesRoutes = require('./routes/notes');
 app.use('/api/notes', notesRoutes);
 
 //#endregion
+
+//#region 6
+
+// Import the Mongoose module to interact with MongoDB
+// Mongoose is a tool that brings order, validation, 
+// and JavaScript-friendly features to your MongoDB database
+const mongoose = require('mongoose');
+
+// Connect to MongoDB then starts the server if successful
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        // Start the server
+        app.listen(process.env.PORT, () => {
+            console.log(`Connected to DB and server is running on port ${process.env.PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Error connecting to MongoDB:', error);
+    });
+
+//#endregion
