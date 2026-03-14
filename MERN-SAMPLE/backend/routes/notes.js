@@ -1,26 +1,16 @@
 const express = require('express');
+const { createNote, getAllNote, getSingleNote } = require('../controllers/noteController');
 
 const router = express.Router();
 
 // GET notes all
-router.get('/', (req, res) => {
-    res.json({
-        message: '¡Vamos!',
-        name: 'monsi',
-        age: 21
-    });
-});
+router.get('/', getAllNote);
 
 // GET single note with ID; display
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({ message: `You requested note with ID: ${id}` });
-});
+router.get('/:id', getSingleNote);
 
 // POST create a new note
-router.post('/', (req, res) => {
-    res.json({message: 'i text a postcard sent to you, did it go through?'});
-});
+router.post('/', createNote);
 
 // DELETE a note by ID
 router.delete('/:id', (req, res) => {
