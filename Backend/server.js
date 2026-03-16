@@ -9,6 +9,13 @@ app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 });
+
+app.use (express.json());
+app.use((req, res, next) => {
+   console.log(req.path, req.method);
+   next();
+});
+
 // ROUTE TO NOTES
 app.use('/api/notes', notesRouter);
 mongoose.connect(process.env.MONGO_URI).then(() =>{
