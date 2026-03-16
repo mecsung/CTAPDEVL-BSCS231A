@@ -29,6 +29,5 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 
-
 // Remove Basic route to test the server
 
