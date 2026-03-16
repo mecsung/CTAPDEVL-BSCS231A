@@ -39,17 +39,25 @@ router.post('/', (req, res) => {
 
 */
 
+/*
+
 // DELETE a note
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
     res.json({ message: `Note with ID: ${id} deleted successfully!` });
 });
 
+*/
+
+/*
+
 // UPDATE a note
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
     res.json({ message: `Note with ID: ${id} updated successfully!` });
 });
+
+*/
 
 //#endregion
 
@@ -82,7 +90,7 @@ router.post('/', async (req, res) => {
 
 //#region 3
 
-const { createNote, getAllNotes, getSingleNote } = require('../controllers/noteController');
+const { createNote, getAllNotes, getSingleNote, deleteSingleNote, updateSingleNote } = require('../controllers/noteController');
 
 // POST create a new note
 router.post('/', createNote);
@@ -92,6 +100,16 @@ router.get('/', getAllNotes);
 
 // GET single note
 router.get('/:id', getSingleNote);
+
+//#endregion
+
+//#region 4
+
+// DELETE a note by ID
+router.delete('/:id', deleteSingleNote);
+
+// UPDATE a note by ID
+router.patch('/:id', updateSingleNote);
 
 //#endregion
 
