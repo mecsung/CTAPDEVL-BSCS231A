@@ -1,5 +1,5 @@
 const express = require('express');
-const { createNote, getAllNote, getSingleNote } = require('../controllers/noteController');
+const { createNote, getAllNote, getSingleNote, deleteNote, updateNote } = require('../controllers/noteController');
 
 const router = express.Router();
 
@@ -13,19 +13,9 @@ router.get('/:id', getSingleNote);
 router.post('/', createNote);
 
 // DELETE a note by ID
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json(`Your requested note with ID: ${id} has been deleted.`);
-});
+router.delete('/:id', deleteNote);
 
 // PATCH update a note
-router.patch('/:id', (req,res) => {
-    const { id } = req.params;
-    res.json({
-        message: `Hello World! updated with ID: ${id}`,
-        name: "monsimonsi",
-        age: 1
-    });
-});
+router.patch('/:id', updateNote);
 
 module.exports = router;
