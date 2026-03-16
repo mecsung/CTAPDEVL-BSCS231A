@@ -7,6 +7,7 @@ const notesRouter = require('./routes/notes');
 
 const app = express();
 
+
 //need to be in middle
 app.use(express.json());
 app.use((req, res, next) => {
@@ -25,7 +26,8 @@ app.use('/api/notes', notesRouter);
 //   res.send('Hello World!');
 // });
 
-mongoose. connect (process.env.MONGO_URI)
+
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT, () => {
       console.log('Server and Database are running on port', process.env.PORT);

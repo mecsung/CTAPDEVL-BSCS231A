@@ -14,4 +14,4 @@ const noteSchema = new Schema({
 }, {timestamps: true} //automatic 'created at' column
 );
 
-module.exports = mongoose.model('Notes', noteSchema);
+module.exports = mongoose.model('Note', noteSchema);
