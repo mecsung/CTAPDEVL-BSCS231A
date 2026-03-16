@@ -1,44 +1,21 @@
 const express = require('express');
-const Note = require('../models/noteModel')
+const { createNote, delNote, upNote, getNote, getNotebyId } = require('../controllers/noteController');
  
 const router = express.Router();
  
-//GET notes
-router.get('/', (req, res) => {
-    res.json({ message: 'Hello world' });
-});
+// GET notes all
+router.get('/', getAllNote);
  
-//GET ID
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({ message: `Usto ko ng ${id} na itlog` });
-});
+// GET single note with ID; display
+router.get('/:id', getSingleNote);
  
-//POST
-router.post('/', async (req, res) => {
-    const { title, content } = req.body;
+// POST create a new note
+router.post('/', createNote);
  
-    try{
-        const note = await Note.create({title, content });
-        res.status(200).json(note);
-    }
-    catch(error){
-        res.status(400).json({error: error.message});
-    }
-    res.json({message: "May note ka na"})
-});
+// DELETE a note by ID
+router.delete('/:id', deleteNote);
  
-//UPDATE
-router.patch('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({ message: `Id #${id} is updated` });
-});
- 
-//DELETE
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({ message: `Sorry stict ang parents ko ${id} ` });
-});
- 
+// PATCH update a note
+router.patch('/:id', updateNote);
  
 module.exports = router;

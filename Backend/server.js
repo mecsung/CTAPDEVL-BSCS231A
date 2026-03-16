@@ -10,6 +10,7 @@ app.use((req, res, next) => {
     next();
 });
 
+//middleware
 app.use(express.json());
 app.use('/api/notes', notesRouter);
 
