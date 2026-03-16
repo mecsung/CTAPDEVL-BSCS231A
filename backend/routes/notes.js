@@ -1,42 +1,25 @@
 const express = require('express');
-const Note = require('../models/noteModel');
 
 const router = express.Router();
+const { createNote ,
+    deleteNote,
+    updateNote,
+    getNotes,
+    getNotebyID
+} = require('../controller/noteController');
 
-router.get('/', (req, res) => {
-    res.json({message: 'Welcome to the Notes API!'});
-});
+router.get('/', getNotes);
 
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({message: `You requested note with ID: ${id}`});
-});
+router.get('/:id', getNotesbyID);
 
 //Create a new note
-router.post('/', async (req, res) => {
-    const {title, content} = req.body;
-
-    try{
-    const note = await Note.create({title, content});
-    res.status(201).json(note);
-    }
-    catch (error){
-        res.status(400).json({error: error.message});
-    }
-    res.json({message: 'Note created successfully!'});
-});
+router.post('/', createNote );
 
 //Delete a note
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({message: `Note with ID: ${id} deleted successfully!`});
-});
+router.delete('/:id', deleteNote);
 
 //Update a note
-router.patch('/:id', (req, res) => {
-    const { id } = req.params;
-    res.json({message: `Note with ID: ${id} updated successfully!`});
-});
+router.patch('/:id', updateNote);
 
 
 module.exports = router;
