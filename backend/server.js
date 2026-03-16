@@ -1,30 +1,40 @@
 require('dotenv').config();
-
 const express = require('express');
-//mongoose
 const mongoose = require('mongoose');
-
 const notesRoutes = require('./routes/notes');
 
-
 const app = express();
+const PORT = process.env.PORT || 4000;
+
+// 1. JSON Parser Middleware
 app.use(express.json());
 
-//middleware
+// 2. Logging Middleware
 app.use((req, res, next) => {
-    console.log(req.path, req.method);
+    console.log(`${req.method} request to: ${req.path}`);
     next();
 });
 
+// 3. API Routes
 app.use('/api/notes', notesRoutes);
 
+// 4. Base Route
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Welcome to the Notes API' });
+});
 
-//connect to mongodb
+// 5. 404 Handler (JSON format)
+app.use((req, res) => {
+    res.status(404).json({ error: 'Route not found' });
+});
+
+// 6. Connect to MongoDB & Start Server
 mongoose.connect(process.env.MONGO_URI)
-    .then ( () => {
-    app.listen(process.env.PORT, () => {
-        console.log('Server and database running  on port', process.env.PORT);
-    });
-}).catch((error) => {
-        console.error('Error Connecting to mongo', error);
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(` Connected to DB & Server running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error(' Database connection error:', error.message);
     });

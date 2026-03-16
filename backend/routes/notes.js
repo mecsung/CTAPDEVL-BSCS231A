@@ -1,44 +1,26 @@
 const express = require('express');
-const Note = require('../models/noteModel');
-
 const router = express.Router();
+const { 
+    createNote, 
+    deleteNote, 
+    updateNote, 
+    getNotes, 
+    getNotesById 
+} = require('../controllers/noteController.js');
 
-// Define your routes here
-router.get('/', (req, res) => {
-    res.send('Notes route');
-});
+// 1. Get ALL notes
+router.get('/', getNotes);
 
+// 2. Get a SINGLE note by ID
+router.get('/:id', getNotesById);
 
-//get single note
-router.get('/:id', (req, res) => {
-    const {id} = req.params;
-    res.json({ message: `requested note with ID: ${id}`});
-});
+// 3. Create a new note
+router.post('/', createNote);
 
-// Create a new note
-router.post('/', async(req, res) => {
-   const { title, content } = req.body;
-   try{
-        const note = await Note.create({ title, content});
-        res.status(200).json(note);
-   }
-catch (error) {
-        res.status(400).json({ error: error.message});
-   }
-   res.json({message: 'Note created'});
-});
+// 4. Delete a note
+router.delete('/:id', deleteNote);
 
-
-// //delete a note
-// router.delete('/:id', (req, res) => {
-//     const {id} = req.params;
-//     res.json({ message: `Note with ID: ${id} deleted successfully` });
-// });
-
-// //update a note
-// router.patch('/:id', (req, res) => {
-//     const {id} = req.params;
-//     res.json({ message: `Note with ID: ${id} updated successfully` });
-// })
+// 5. Update a note
+router.patch('/:id', updateNote);
 
 module.exports = router;
