@@ -3,15 +3,6 @@ const Note = require('../models/noteModel'); // also check filename, should be s
 
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   res.json({
-//       message: "Notes route working",
-//       name: 'John Doe',
-//       age: 30
-
-//    });
-// });
-
 // GET all notes
 router.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Notes API!' });
@@ -22,16 +13,6 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   res.json({ message: `You requested note with ID: ${id}` });
 });
-
-// POST create a new note
-// router.post('/', (req, res) => {
-//   res.json({
-//       message: "Sakit tyan ko",
-//       name: 'Aray ko',
-//       age: 15
-
-//    });
-// });
 
 // DELETE a note by ID
 router.delete('/:id', (req, res) => {
