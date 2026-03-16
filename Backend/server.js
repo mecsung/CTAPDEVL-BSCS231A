@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 // route to notes.js
 app.use('/api/notes', notesRouter);
 
+// connect to MongoDB and start the server
 mongoose.connect(process.env.MONGO_URI)
     .then(() =>{
         app.listen(process.env.PORT, () => {
