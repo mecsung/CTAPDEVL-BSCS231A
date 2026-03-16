@@ -1,5 +1,5 @@
-// 1. Correct Import
-const Note = require('../models/noteModels.js');
+// 1. Correct Import (use CommonJS to match other files)
+const Note = require('../models/noteModel.js');
 
 // Get all notes
 const getAllNotes = async (req, res) => {
