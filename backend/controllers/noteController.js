@@ -1,5 +1,5 @@
 const Note = require('../models/noteModel.js');
-
+//switch branch to act2
 // Get all notes
 const getAllNote = async (req, res) => {
     try {
@@ -65,9 +65,9 @@ const updateNote = async (req, res) => {
 
 
 module.exports = {
-    createNote,
-    deleteNote,
-    updateNote,
     getAllNote,
-    getSingleNote
+    getSingleNote,
+     createNote,
+    deleteNote,
+    updateNote
 };
