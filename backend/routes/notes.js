@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
+
 const { 
     createNote, 
     deleteNote, 
     updateNote, 
-    getNotes, 
-    getNotesById 
+    getAllNote, 
+    getSingleNote 
 } = require('../controllers/noteController.js');
 
 // 1. Get ALL notes
-router.get('/', getNotes);
+router.get('/', getAllNote);
 
 // 2. Get a SINGLE note by ID
-router.get('/:id', getNotesById);
+router.get('/:id', getSingleNote);
 
 // 3. Create a new note
 router.post('/', createNote);
