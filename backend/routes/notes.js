@@ -10,14 +10,15 @@ const router = express.Router();
 
 router.get('/', getAllNotes);
 
-router.get('/', getNoteById);
+router.get('/:id', getNoteById);
 
-router.get('/', createNote);
+router.post('/', createNote); 
 
-router.get('/', deleteNote);
+router.delete('/:id', deleteNote);
 
-router.get('/', updateNote);
+router.patch('/:id', updateNote);
 
+module.exports = router;
 
 // router.get('/', (req, res) => {
 //   res.json({ message: 'Welcome to the Notes API!' });
@@ -31,11 +32,3 @@ router.get('/', updateNote);
 // router.post('/', (req, res) => {
 //   res.json({ message: 'Note created successfully!' });
 // });
-
-router.post('/', createNote); 
-
-router.delete('/:id', deleteNote);
-
-router.patch('/:id', updateNote);
-
-module.exports = router;

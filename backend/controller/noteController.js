@@ -3,7 +3,7 @@ const Note = require('../models/noteModel');
 //get all notes
 const getAllNotes = async(req, res) => {
     const notes = await Note.find({}).sort({createdAt: -1});
-    res.status(200).json(note);
+    res.status(200).json(notes);
 }
 
 //get a specific note by 10
@@ -52,7 +52,7 @@ const updateNote = async (req, res) => {
     if (!note){
         return res.status(404).json({error: 'Note not found'});
     }
-    res.status(200).json({message: 'Note deleted successfully!'});
+    res.status(200).json({message: 'Note updated successfully!', note});
 }
 
 module.exports = {
