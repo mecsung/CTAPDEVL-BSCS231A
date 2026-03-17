@@ -10,17 +10,17 @@ const router = express.Router();
 router.get('/', getNote);
 
 //GET ID
-router.get('/', getNotebyId);
+router.get('/:id', getNotebyId);
 
 //POST
-router.post('/', createNote);
+router.post('/:id', createNote);
 
 
 //UPDATE
-router.get('/', upNote);
+router.patch('/:id', upNote);
 
 //DELETE
-router.get('/', delNote);
+router.delete('/:id', delNote);
 
 
 module.exports = router;   
