@@ -1,7 +1,7 @@
 const Note = require('../models/nodeModel');
 
 // Get all notes
-const getNotes = async (req,res) => {
+const getAllNote = async (req,res) => {
     const notes = await Note.find({}).sort({createdAt: -1});
     res.status(200).json(notes);
 };
@@ -34,7 +34,7 @@ const deleteNote = async (req,res) => {
     if(!note){
         return res.status(404).json({error: 'Note not found'});
     }
-    res.status(200).json(note);
+    res.status(200).json({message: 'Note deleted successfully!'});
 }; 
 // Update a note by id 
 const updateNote = async (req,res) => {
@@ -48,7 +48,7 @@ const updateNote = async (req,res) => {
 };
 module.exports = {
     createNote,
-    getNotes,
+    getAllNote,
     getSingleNote,
     deleteNote,
     updateNote,
