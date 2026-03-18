@@ -4,18 +4,18 @@ const Note = require('../models/notesModels');
 const getNote = async (req, res) => {
     const notes = await Note.find({}).sort({ createdAt: -1 });
     res.status(200).json(notes);
-}
+};
  
 // Get a single note
 const getNotebyId = async (req, res) => {
     const { id } = req.params;
-    const notes = await Note.findById(id);
+    const note = await Note.findById(id);
  
     if (!note) {
         return res.status(404).json({ error: 'Note not found' });
     }
-    res.status(200).json(notes);
-}
+    res.status(200).json(note);
+};
 // Create a note
 const createNote = async (req, res) => {
  
@@ -34,26 +34,26 @@ const createNote = async (req, res) => {
  
 // Update a note
 const updateNote = async (req, res) => {
-    const { id } = req.param;
+    const { id } = req.params;
     const { title, content } = req.body;
-    const notes = await Note.findByIdAndUpdate(id, { title, content }, { new: true });
+    const note = await Note.findByIdAndUpdate(id, { title, content }, { new: true });
  
     if (!note) {
         return res.status(404).json({ error: 'Note not found' });
     }
     res.status(200).json({ message: 'Note updated note successfully!' });
-}
+};
  
 // Delete a note
 const deleteNote = async (req, res) => {
-    const { id } = req.param;
-    const notes = await Note.findByIdAndDelete(id);
+    const { id } = req.params;
+    const note = await Note.findByIdAndDelete(id);
  
     if (!note) {
         return res.status(404).json({ error: 'Note not found' });
     }
     res.status(200).json({ message: 'Note deleted successfully!' });
-}
+};
  
  
 module.exports = {
@@ -62,4 +62,4 @@ module.exports = {
     updateNote,
     getNote,
     getNotebyId
-}
+};
