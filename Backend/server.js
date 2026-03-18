@@ -1,9 +1,13 @@
 require('dotenv').config();
-const express = require('express')
+const express = require('express');
+const mongoose = require('mongoose');
+const dns = require('dns');
 
 const notesRouter = require('./routes/notes');
 const app = express();
-const dns = require('dns');
+
+// Middleware to parse JSON
+app.use(express.json());
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);
@@ -12,11 +16,6 @@ app.use((req, res, next) => {
 
 app.use('/api/notes', notesRouter);
 
-<<<<<<< Updated upstream
-app.listen(process.env.PORT, () => [
-    console.log('Server is running on port 3000!!!', process.env.PORT)
-]);
-=======
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 //connect MongoDB and start the server
@@ -27,4 +26,8 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 }).catch((error) => {
     console.error('Error connecting to MongoDB:', error)
 });
->>>>>>> Stashed changes
+
+app.use((req, res) => {
+    console.log(req.path, req.method);
+    next();
+});
