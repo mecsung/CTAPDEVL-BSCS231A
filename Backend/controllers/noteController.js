@@ -33,7 +33,7 @@ const createNote = async (req, res) => {
  
  
 // Update a note
-const upNote = async (req, res) => {
+const updateNote = async (req, res) => {
     const { id } = req.param;
     const { title, content } = req.body;
     const notes = await Note.findByIdAndUpdate(id, { title, content }, { new: true });
@@ -45,7 +45,7 @@ const upNote = async (req, res) => {
 }
  
 // Delete a note
-const delNote = async (req, res) => {
+const deleteNote = async (req, res) => {
     const { id } = req.param;
     const notes = await Note.findByIdAndDelete(id);
  
@@ -58,8 +58,8 @@ const delNote = async (req, res) => {
  
 module.exports = {
     createNote,
-    delNote,
-    upNote,
+    deleteNote,
+    updateNote,
     getNote,
     getNotebyId
 }

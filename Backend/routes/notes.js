@@ -7,19 +7,16 @@ const {
   updateNote,
 } = require('../controllers/noteController');
 
-// GET notes all
-router.get('/', getNote);
+const router = express.Router();
+
+router.get('/',getNote);
  
-// GET single note with ID; display
 router.get('/:id', getNotebyId);
- 
-// POST create a new note
+
 router.post('/', createNote);
  
-// DELETE a note by ID
-router.deleteNote('/:id', deleteNote);
- 
-// PATCH update a note
-router.patchNote('/:id', updateNote);
- 
-module.exports = router;
+router.delete('/:id', deleteNote);
+
+router.patch('/:id', updateNote);
+
+ module.exports = router;
