@@ -1,23 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-// controller is in the same folder
+// Import controller functions
 const {
   getAllNotes,
   getSingleNote,
   createNote,
   updateNote,
   deleteNote
-} = require('./notesController'); // <-- ./ because same folder
+} = require('../routes/notesController'); // adjust path if needed
 
-<<<<<<< Updated upstream
-=======
 // CRUD routes
-router.get('/', getAllNotes);
-router.get('/:id', getSingleNote);
-router.post('/', createNote);
-router.put('/:id', updateNote);
-router.delete('/:id', deleteNote);
+router.get('/', getAllNotes);           // GET all notes
+router.get('/:id', getSingleNote);      // GET note by ID
+router.post('/', createNote);           // POST create note
+router.put('/:id', updateNote);         // PUT update note
+router.delete('/:id', deleteNote);      // DELETE note
 
->>>>>>> Stashed changes
 module.exports = router;

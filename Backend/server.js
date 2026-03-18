@@ -1,21 +1,20 @@
-require('dotenv').config();
-const express = require('express')
-
+require('dotenv').config(); // MUST be first
+const express = require('express');
+const mongoose = require('mongoose'); // Make sure mongoose is installed
 const notesRouter = require('./routes/notes');
+
 const app = express();
 
+// Middleware
+app.use(express.json());
 app.use((req, res, next) => {
-    console.log(req.path, req.method);
-    next();
+  console.log(`➡️ ${req.method} ${req.path}`);
+  next();
 });
 
+// Routes
 app.use('/api/notes', notesRouter);
 
-<<<<<<< Updated upstream
-app.listen(process.env.PORT, () => [
-    console.log('Server is running on port 3000!!!', process.env.PORT)
-]);
-=======
 // Root route
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -23,6 +22,8 @@ app.get('/', (req, res) => {
 
 // Database connection
 const PORT = process.env.PORT || 3000;
+
+console.log('Mongo URI:', process.env.MONGO_URI); // Debug
 
 mongoose.connect(process.env.MONGO_URI, { family: 4 })
   .then(() => {
@@ -39,4 +40,3 @@ mongoose.connect(process.env.MONGO_URI, { family: 4 })
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
->>>>>>> Stashed changes
