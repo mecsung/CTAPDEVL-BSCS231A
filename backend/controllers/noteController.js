@@ -9,12 +9,17 @@ const createNote = async (req, res) => {
 
     try {
         const note = await Note.create({ title, content });
-        res.status(200).json(note);
+        res.status(200).json({
+            message: 'Note created successfully!',
+            note: note
+        });
     }
     catch (error) {
         res.status(400).json({ error: error.message });
     }
-    res.json({ message: 'Note created successfully!' });
+
+    // This line is commented because you can only send one response per request!
+    // res.json({ message: 'Note created successfully!' });
 };
 
 // Get all notes
@@ -52,12 +57,13 @@ const deleteSingleNote = async (req, res) => {
         return res.status(404).json({ error: 'Note not found' });
     }
 
-    const note = await Note.findById(id);
+    const note = await Note.findByIdAndDelete(id);
 
     if (!note) {
         return res.status(404).json({ error: 'Note not found' });
     }
     
+    res.status(200).json({ message: `Note with ID: ${id} deleted successfully!` });
 }
 
 // Update a single note
@@ -69,12 +75,18 @@ const updateSingleNote = async (req, res) => {
         return res.status(404).json({ error: 'Note not found' });
     }
 
-    const note = await Note.findById(id);
+    // "new: false" returns the document as it was before update was applied, in this case it's,
+    // oposite of what we want, we want the updated note, so we set "new: true"
+    const note = await Note.findByIdAndUpdate(id, { title, content }, { new: true });
 
     if (!note) {
         return res.status(404).json({ error: 'Note not found' });
     }
     
+    res.status(200).json({
+        message: 'Note updated successfully!',
+        note: note
+    });
 }
 
 //#endregion

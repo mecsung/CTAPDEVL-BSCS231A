@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 // Create a reference to the Schema constructor from Mongoose
+// Schema is the same as table, but it has no visul representation
 const Schema = mongoose.Schema;
 
 const noteSchema = new Schema({
