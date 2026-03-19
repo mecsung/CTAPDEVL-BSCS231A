@@ -15,6 +15,10 @@
     "dotenv": "^17.3.1",
     "dotevn": "^0.0.1-security",
     "express": "^5.2.1",
+<<<<<<< Updated upstream:Backend/package.json
+=======
+    "mongoose": "^9.3.1",
+>>>>>>> Stashed changes:server/package.json
     "nodemon": "^3.1.14"
   }
 }
