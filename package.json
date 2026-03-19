@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "mongodb": "^7.1.0",
+    "mongoose": "^9.3.0"
+  },
+  "name": "ctapdevl-bscs231a",
+  "version": "1.0.0",
+  "description": "Repository for BSCS231A",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mecsung/CTAPDEVL-BSCS231A.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mecsung/CTAPDEVL-BSCS231A/issues"
+  },
+  "homepage": "https://github.com/mecsung/CTAPDEVL-BSCS231A#readme"
+}
