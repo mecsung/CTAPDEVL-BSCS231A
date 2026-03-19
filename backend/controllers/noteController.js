@@ -1,56 +1,66 @@
 const Note = require('../models/noteModel')
 
-
 const createNote = async (req, res) => {
     const { title, content } = req.body;
 
     try {
         const note = await Note.create({ title, content });
-        res.status(200).json(note);
+        return res.status(200).json(note);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        return res.status(400).json({ error: error.message });
     }
-    res.json({ message: 'Note created successfully!' });  
 }
 
 const getNotes = async (req, res) => {
-    const note = await Note.find({}).sort({ createdAt: -1 });
-    res.status(200).json(note);
+    try {
+        const note = await Note.find({}).sort({ createdAt: -1 });
+        return res.status(200).json(note);
+    } catch (error) {
+        return res.status(400).json({ error: error.message });
+    }
 }
 
 const getNoteById = async (req, res) => {
     const { id } = req.params;
-    const note = await Note.findById(id);
 
-    if (!note) {
-        return res.status(404).json({ error: 'Note not found' });
+    try {
+        const note = await Note.findById(id);
+        if (!note) {
+            return res.status(404).json({ error: 'Note not found!' });
+        }
+        return res.status(200).json(note);
+    } catch (error) {
+        return res.status(400).json({ error: error.message });
     }
-
-    res.status(200).json(note);
 }
 
 const deleteNote = async (req, res) => {
     const { id } = req.params;
-    const note = await Note.findByIdAndDelete(id);
 
-    if (!note) {
-        return res.status(404).json({ error: 'Note not found' });
+    try {
+        const note = await Note.findByIdAndDelete(id);
+        if (!note) {
+            return res.status(404).json({ error: 'Note not found!' });
+        }
+        return res.status(200).json({ message: 'Note deleted successfully!' });
+    } catch (error) {
+        return res.status(400).json({ error: error.message });
     }
-
-    res.status(200).json({ message: 'Note deleted successfully!' });
 }
 
 const updateNote = async (req, res) => {
     const { id } = req.params;
     const { title, content } = req.body;
 
-    const note = await Note.findByIdAndUpdate(id, { title, content }, { new: true })
-
-    if (!note) {
-        return res.status(404).json({ error: 'Note not found' });
+    try {
+        const note = await Note.findByIdAndUpdate(id, { title, content }, { new: true });
+        if (!note) {
+            return res.status(404).json({ error: 'Note not found!' });
+        }
+        return res.status(200).json(note);
+    } catch (error) {
+        return res.status(400).json({ error: error.message });
     }
-
-    res.status(200).json(note);
 }
 
 module.exports = {
