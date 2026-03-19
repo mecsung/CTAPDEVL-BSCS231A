@@ -1,37 +1,33 @@
-require('dotenv').config();
+//byrs
 
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const dns = require('dns');
 
-const ToNotes = require('./routes/notes');
+const notesRouter = require('./routes/notes');
 const app = express();
 
+app.use(express.json());
+
 app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 });
 
-app.use(express.json());
-app.use('/api/notes', ToNotes);
+app.use('/api/notes', notesRouter);
 
-//connect and start server
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
+dns.setServers(['0.0.0.0', '1.1.1.1']);
+
+mongoose.connect(process.env.MONGO_URI).then(() => {
     app.listen(process.env.PORT, () => {
-        console.log('Server and database are running on port', process.env.PORT);
+        console.log('Server and Database are running on port', process.env.PORT);
     })
-})
-.catch((error) => {
-    console.error('Error connecting to MongoDB: ', error);
-})
+}).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+});
 
-app.use(express.json());
-app.use((req, res, next) => {
+app.use((req, res) => {
     console.log(req.path, req.method);
     next();
 });
-
-app.listen(process.env.PORT, () => {
-    console.log('Server is running on port', process.env.PORT);
-});
-
