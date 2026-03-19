@@ -1,18 +1,5 @@
 const express = require('express');
-<<<<<<< Updated upstream
-
-const router = express.Router();
-
-router.get('/', (req, res) => {
-    //    res.send('Hello World');
-    res.json({
-        message: 'Hello World',
-        name: 'John Doe',
-        age: 67
-    });
-})
-=======
-const { createNote, getSingleNote, UpdateNote, deleteNote, getAllNote } = require('../controllers/noteControllers');
+const { createNote, getSingleNote, getAllNote, UpdateNote, deleteNote } = require('../controllers/noteControllers');
 
 const router = express.Router();
 
@@ -28,7 +15,7 @@ router.get('/:_id',getSingleNote);
 // });
 
 //Create a new note
-router.post('/',createNote);
+router.post('/:_id',createNote);
 
 // this line of comment in this code is moved in noteControllers.js
 // router.post('/', async (req, res) => {
@@ -45,7 +32,7 @@ router.post('/',createNote);
 // });
 
 //Delete a note
-router.delete('/:_id',deleteNote);
+router.delete('/:_id', deleteNote);
 
 // this line of comment in this code is moved in noteControllers.js
 // router.delete('/:id', (req, res) => {
@@ -54,13 +41,10 @@ router.delete('/:_id',deleteNote);
 // });
 
 //Update a note
-router.patch('/:_id',UpdateNote)
+router.patch('/:id', UpdateNote)
 
 // this line of comment in this code is moved in noteControllers.js
-// router.patch('/:id', (req, res) => {
-//     const {id} = req.params;
-//     res.json({ message: `Note with ID: ${id} updated successfully` });
-// })
->>>>>>> Stashed changes
+    // const {id} = req.params;
+    // res.json({ message: `Note with ID: ${id} updated successfully` });
 
 module.exports = router;
