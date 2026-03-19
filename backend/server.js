@@ -1,33 +1,34 @@
 require('dotenv').config();
+
 const express = require('express');
-const mongoose = require('mongoose');
-
-const notesRoutes = require('./routes/notes');
-
+const mongoose = require('mongoose'); //MongoDB require
+const ToNotes = require('./routes/notes'); //Routing
 const app = express();
+const dns = require('dns');
 
-//Middleware
-app.use(express.json());
 app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 });
 
-app.use('/api/notes', notesRoutes);
+app.use(express.json());
+app.use('/api/notes', ToNotes);
 
-//Database connection
-mongoose.connect(process.env.MONGO_URI).then(() => {
-    app.listen(process.env.PORT, () => {
-        console.log('Server and database are running on port', process.env.PORT);
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log('Server is running on port', process.env.PORT);
+        });
     })
-}).catch((error) => {
-    console.error('Error connecting to MongDB:', error);
-});
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
 
-app.listen(process.env.PORT, () => {
-    console.log('Server is running on port', process.env.PORT);
+app.use(express.json());
+app.use((req, res, next) => {
+    console.log(req.path, req.method);
+    next();
 });
