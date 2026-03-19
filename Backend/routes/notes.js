@@ -1,15 +1,13 @@
 const express = require('express');
-const { createNote, getSingleNote } = require('../controllers/noteControllers');
+const { createNote, getSingleNote, getAllNote, UpdateNote, deleteNote } = require('../controllers/noteControllers');
 
 const router = express.Router();
 
 // Define your routes here
-router.get('/', (req, res) => {
-    res.send('Notes route');
-});
+router.get('/', getAllNote);
 
 //Get single note
-router.post('/',getSingleNote);
+router.get('/:_id',getSingleNote);
 
 // router.get('/:id', (req, res) => {
 //     const {id} = req.params;
@@ -17,7 +15,7 @@ router.post('/',getSingleNote);
 // });
 
 //Create a new note
-router.post('/',createNote);
+router.post('/:_id',createNote);
 
 // this line of comment in this code is moved in noteControllers.js
 // router.post('/', async (req, res) => {
@@ -33,23 +31,16 @@ router.post('/',createNote);
 //     res.json({ message: 'Note created successfully' });
 // });
 
-//Post create a new note
-router.post('/',createNote);
-// router.post('/', (req, res) => {
-//     res.json({ message: 'Note created successfully' });
-// });
-
 //Delete a note
-router.post()
+router.delete('/:_id', deleteNote);
 // router.delete('/:id', (req, res) => {
 //     const {id} = req.params;
 //     res.json({ message: `Note with ID: ${id} deleted successfully` });
 // });
 
 //Update a note
-router.patch('/:id', (req, res) => {
+router.patch('/:id', UpdateNote)
     const {id} = req.params;
     res.json({ message: `Note with ID: ${id} updated successfully` });
-})
 
 module.exports = router;
