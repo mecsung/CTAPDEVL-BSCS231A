@@ -33,6 +33,8 @@ router.post('/:_id',createNote);
 
 //Delete a note
 router.delete('/:_id', deleteNote);
+
+// this line of comment in this code is moved in noteControllers.js
 // router.delete('/:id', (req, res) => {
 //     const {id} = req.params;
 //     res.json({ message: `Note with ID: ${id} deleted successfully` });
@@ -40,7 +42,9 @@ router.delete('/:_id', deleteNote);
 
 //Update a note
 router.patch('/:id', UpdateNote)
-    const {id} = req.params;
-    res.json({ message: `Note with ID: ${id} updated successfully` });
+
+// this line of comment in this code is moved in noteControllers.js
+    // const {id} = req.params;
+    // res.json({ message: `Note with ID: ${id} updated successfully` });
 
 module.exports = router;
