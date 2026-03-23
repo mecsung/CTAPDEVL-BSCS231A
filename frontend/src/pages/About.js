@@ -1,4 +1,5 @@
 const About = () => {
+    //About
     return (
         <div className = "about">
             <h1>About App Development</h1>
