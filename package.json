@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "mongodb": "^7.1.0",
-    "mongoose": "^9.3.0"
+    "mongoose": "^9.3.0",
+    "react-router-dom": "^7.13.1"
   },
   "name": "ctapdevl-bscs231a",
   "version": "1.0.0",
   "description": "Repository for BSCS231A",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
