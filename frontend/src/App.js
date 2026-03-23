@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 // pages and components
 import Home from './pages/Home';
 import Login from './pages/Login';
+import AboutUs from './pages/AboutUs';
 import Navbar from './components/navbar';
 
 function App() {
@@ -26,6 +27,15 @@ function App() {
             <Route 
               path='/login'
               element={<Login />}
+            />
+          </Routes>
+        </div>
+
+        <div className="AboutUs">
+          <Routes>
+            <Route 
+              path='/aboutUs'
+              element={<AboutUs />}
             />
           </Routes>
         </div>
