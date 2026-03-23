@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-const noteRoutes = require("./routes/note");
+const noteRoutes = require("./routes/note.router.js");
 
 // Middleware
 app.use(express.json());

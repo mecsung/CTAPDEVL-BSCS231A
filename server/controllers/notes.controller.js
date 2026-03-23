@@ -10,7 +10,7 @@ export const getSingleNote = async (req, res) => {
   const note = await Note.findById(id);
 
   if (!note) {
-    return res.status(400).json({ error: "Note not Found!" });
+    return res.status(404).json({ error: "Note not Found!" });
   }
 
   res.status(200).json(note);
