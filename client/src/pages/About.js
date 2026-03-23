@@ -12,6 +12,7 @@ Do you think I have forgotten?
 Do you think I have forgotten?
 Do you think I have forgotten
 About you?
+</p>
         </div>
     )
 }
