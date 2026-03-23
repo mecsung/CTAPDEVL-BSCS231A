@@ -4,7 +4,8 @@ const Login = () => {
             <h1>Login Page</h1>
             <form action="">
                 <input type="text" placeholder="Username"/>
-                <input type="password" name="" id="" />
+                <input type="password" placeholder="Password" name="" id="" />
+                <button type="submit">Login</button>
             </form>
         </div>
     )
