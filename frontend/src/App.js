@@ -17,6 +17,10 @@ function App() {
                 element={<Home />}
                 />
               <Route
+                path='/About us'
+                element={<AboutUs />}
+              />
+              <Route
                 path='/login'
                 element={<Login />}
               />
