@@ -1,4 +1,4 @@
-const Note = require('../models/nodeModel');
+const Note = require('../models/noteModel');
 
 // Get all notes
 const getAllNote = async (req,res) => {

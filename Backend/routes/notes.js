@@ -1,5 +1,5 @@
 const express = require('express');
-const Note = require('../models/nodeModel');
+const Note = require('../models/noteModel');
 const router = express.Router();
 const {createNote, getAllNote, getSingleNote, deleteNote, updateNote} 
 = require('../controller/noteController');
