@@ -3,11 +3,15 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 // pages and components
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Navbar from './components/navbar';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+
+        <Navbar/>
+
         <div className="pages">
           <Routes>
             <Route 
@@ -20,7 +24,7 @@ function App() {
         <div className="Login">
           <Routes>
             <Route 
-              path='/'
+              path='/login'
               element={<Login />}
             />
           </Routes>
