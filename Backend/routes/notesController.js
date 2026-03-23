@@ -73,7 +73,7 @@ const deleteNote = async (req, res) => {
 module.exports = {
   getAllNotes,
   getSingleNote,
-  createNote,
+  createNote, 
   updateNote,
   deleteNote
-};
+}; 
