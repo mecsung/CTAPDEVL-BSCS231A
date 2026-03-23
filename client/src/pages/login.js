@@ -1,10 +1,10 @@
-const Landing = () => {
+const login = () => {
     return (
-        <div className="landing">
-            <h1>Welcome to noots</h1>
+        <div className="login">
+            <h1>Log in</h1>
             <input type="text" placeholder="Username" />
             <input type="password" placeholder="Password" />
-            <button type="submit">Login ka boi</button>
+            <button type="submit">Login</button>
         </div>
     );
 }
