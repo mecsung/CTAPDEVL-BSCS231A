@@ -1,0 +1,149 @@
+.home-container {
+    position: relative; 
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    background-color: #fcfcfc;
+    margin-top: 110px;
+    padding: 2rem 0 2rem 0;
+}
+
+.hero {
+    z-index: 10; 
+    text-align: center;
+}
+
+/* Base style for all floating notes */
+.floating-note {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.home-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    background-color: #fcfcfc;
+    padding: 5rem 0 5rem 0;
+}
+
+.hero {
+    z-index: 10; 
+    text-align: center;
+    max-width: 800px;
+}
+
+/* Middle Text Styling */
+.hero-content h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+}
+
+.hero-content h1 span {
+    color: #007bff;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: #555;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* The Button Links */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.cta-buttons a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white !important;
+    box-shadow: 0 4px 14px rgba(0, 123, 255, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #333 !important;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+    transform: translateY(-3px);
+}
+
+/* Floating notes (animation & visuals) */
+.floating-note {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    opacity: 0.9;
+    z-index: 1; /* behind .hero (z-index:10) */
+    border-radius: 6px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.note-green  { background: #a5d6a7; top: 10%; left: 5%;  transform: rotate(-15deg); }
+.note-yellow { background: #fff59d; top: 15%; right: 8%; transform: rotate(10deg); }
+.note-red    { background: #ef9a9a; bottom: 20%; left: 10%; transform: rotate(-10deg); }
+.note-pink   { background: #f48fb1; bottom: 15%; right: 12%; transform: rotate(15deg); }
+.note-blue   { background: #81d4fa; top: 50%; left: -2%; transform: rotate(5deg); }
+
+.floating-note::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 25px 25px;
+    border-color: transparent transparent #ffffff transparent;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(-10deg); }
+    50% { transform: translateY(-10px) rotate(-8deg); }
+    100% { transform: translateY(0px) rotate(-10deg); }
+}
+
+@media (max-width: 600px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .floating-note { display: none; } 
+}

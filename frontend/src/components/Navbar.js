@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import '../css/navbar.css';
 
 const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <h1>My App</h1>
+                <div className='app-name'>Kwen-Thought</div>
                     <nav>
                         <ul>
-                            <li><Link to ="/"> Home</Link></li>
-                            <li><Link to ="/Login"> Login</Link></li>
-                            <li><Link to ="/About"> About</Link></li>
+                            <li><NavLink to="/" className={({isActive}) => isActive ? 'active' : ''}> Home</NavLink></li>
+                            <li><NavLink to="/login" className={({isActive}) => isActive ? 'active' : ''}> Login</NavLink></li>
+                            <li><NavLink to="/about" className={({isActive}) => isActive ? 'active' : ''}> About</NavLink></li>
                         </ul>
                     </nav>
 

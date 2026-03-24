@@ -1,0 +1,74 @@
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 2rem 2rem 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+}
+
+.app-name {
+    font-family: 'Inter', 'Segoe UI', sans-serif; 
+    font-size: 1.8rem;
+    font-weight: 800; 
+    color: #1a1a1a;
+    letter-spacing: -1.5px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.app-name::first-letter {
+    color: #007bff;
+    font-size: 2rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Styling the Login link as a button */
+nav ul li:nth-child(2) a {
+   
+    color: rgb(0, 0, 0);
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+}
+
+
+nav ul li a.active {
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+}

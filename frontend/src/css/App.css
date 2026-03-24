@@ -1,0 +1,17 @@
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.pages {
+  flex: 1 1 auto;
+}
+
+.pages > * {
+  min-height: 0;
+}
+
+
