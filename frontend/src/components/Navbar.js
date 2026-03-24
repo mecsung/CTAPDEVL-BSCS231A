@@ -1,14 +1,22 @@
 import {Link} from 'react-router-dom';
 
+// just for icons mwehehehehe
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHouse} from '@fortawesome/free-solid-svg-icons'; 
+import {faUser} from '@fortawesome/free-solid-svg-icons';
+import {faCircleInfo} from '@fortawesome/free-solid-svg-icons';
+// npm install @fortawesome/react-fontawesome
+// npm install @fortawesome/free-solid-svg-icons
+
 const Navbar = () => {
     return (
         <header>
             <div className = "container">
                 <h1>My App</h1>
                 <nav>
-                    <li><Link to= '/'>Home</Link></li>
-                    <li><Link to= '/login'>Login</Link></li>
-                    <li><Link to= '/about'>About</Link></li>
+                    <li><FontAwesomeIcon icon={faHouse} className="home-icon" /><Link to= '/'>Home</Link></li>
+                    <li><FontAwesomeIcon icon={faUser} className="user-icon" /><Link to= '/login'>Login</Link></li>
+                    <li><FontAwesomeIcon icon={faCircleInfo} className="info-icon" /><Link to= '/about'>About</Link></li>
                 </nav>
             </div>
         </header>
