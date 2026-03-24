@@ -1,0 +1,90 @@
+/* Reset */
+body, html {
+  margin: 20px;
+  padding: 10px;
+  font-family: 'Poppins', Arial, sans-serif; 
+  background: #2ecc71; 
+  font-size: 18px; 
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  min-height: 150vh;
+}
+
+/* Sidebar (Navbar) */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #030000, #f9f9f9);
+  padding: 20px;
+  border-right: 15px solid #ddd;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem; /* larger title */
+  color: #2c3e50;
+  text-align: center;
+}
+
+.sidebar a {
+  display: block;
+  margin: 15px 0;
+  text-decoration: none;
+  color: #2980b9;
+  font-weight: 600;
+  font-size: 1.3rem; /* bigger links */
+  padding: 20px;
+  border-radius: 15px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+  background: #162936;
+  color: #fff;
+}
+
+/* Main content */
+.page-container {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  background: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+.card h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 3rem;
+  color: rgb(10, 46, 252);
+  margin-bottom: 60px;
+}
+
+/* Buttons */
+button {
+  background: #f1c40f;
+  color: #333;
+  border: none;
+  padding: 14px 28px; 
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem; 
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #d4ac0d;
+}
