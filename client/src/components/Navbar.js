@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-export default function () {
+export default function Navbar() {
   return (
-    <header>
-      <div className="constainer">
+    <header className="nav-bar">
+      <div className="container">
         <h1>My App</h1>
         <nav>
           <ul>

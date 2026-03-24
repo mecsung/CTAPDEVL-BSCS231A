@@ -1,13 +1,86 @@
-body {
+@import url("./root.css");
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-family: var(--font-main);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  background-color: var(--bg-color);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
+#root .App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1em;
+}
+#root .App .nav-bar {
+  height: 12%;
+  width: 100%;
+  background-color: var(--components-bg-color);
+  border-radius: 0 0 1em 1em;
+}
+#root .App .nav-bar .container {
+  height: 100%;
+  display: grid;
+  padding: 1em 2em;
+  grid-template-columns: 1fr 1fr;
+  color: var(--light-text-color);
+}
+#root .App .nav-bar .container h1 {
+  display: flex;
+  align-items: center;
+}
+#root .App .nav-bar .container ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--light-text-color);
+  height: 100%;
+  border-radius: 2em;
+}
+#root .App .nav-bar .container ul li {
+  list-style: none;
+  transition: all 0.2s ease-out;
+}
+#root .App .nav-bar .container ul li:hover {
+  transform: translateY(-2px);
+}
+#root .App .nav-bar .container ul li a {
+  text-decoration: none;
+  color: var(--components-bg-color);
+  font-size: 1.5em;
+  font-weight: 700;
+  position: relative;
+}
+#root .App .nav-bar .container ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 0;
+  background-color: var(--components-bg-color);
+  transition: all 0.2s ease-out;
+}
+#root .App .nav-bar .container ul li a:hover::after {
+  width: 100%;
+}
+#root .App .pages {
+  flex: 1;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=index.css.map */

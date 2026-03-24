@@ -1,0 +1,41 @@
+@import url("../root.css");
+.login {
+  width: 20vw;
+  height: 60%;
+  background-color: var(--components-bg-color);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  color: var(--light-text-color);
+  box-shadow: 0 0 10px 4px rgba(8, 31, 158, 0.5);
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.login form input[type=text] {
+  height: 30px;
+  padding-left: 5px;
+  border: none;
+  border-radius: 8px;
+}
+.login form button {
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--btn-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  transition: all 0.2s ease-out;
+}
+.login form button:hover {
+  background-color: var(--btn-hover);
+  transform: scale(1.05);
+}
+
+/*# sourceMappingURL=Login.css.map */

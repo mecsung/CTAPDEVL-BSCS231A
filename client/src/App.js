@@ -3,6 +3,8 @@ import Home from "./pages/Home.js";
 import Login from "./pages/Login.js";
 import About from "./pages/About.js";
 import Navbar from "./components/Navbar.js";
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</link>
 function App() {
   return (
     <div className="App">
@@ -15,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
           </Routes>
-           <Routes>
+          <Routes>
             <Route path="/about" element={<About />} />
           </Routes>
         </div>

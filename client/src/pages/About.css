@@ -1,0 +1,36 @@
+@import url("../root.css");
+.about-page {
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  color: var(--text-color);
+  background-color: var(--components-bg-color);
+  border-radius: 8px;
+}
+.about-page h1, .about-page p, .about-page ul {
+  user-select: none;
+}
+.about-page h1 {
+  font-size: 2.2em;
+  color: var(--light-text-color);
+}
+.about-page p {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.about-page ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+.about-page ul li {
+  cursor: pointer;
+}
+.about-page ul li:hover {
+  color: var(--light-text-color);
+}
+
+/*# sourceMappingURL=About.css.map */
