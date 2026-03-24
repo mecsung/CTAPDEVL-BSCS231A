@@ -5,11 +5,11 @@ const AboutUs = () => {
       <p>
         WELCOME TO NU NOTESAPP!!!
       </p>
-      <div className="about-us__mission">
+      <div className="about-us-mission">
         <h2>Mission</h2>
         <p></p>
       </div>
-      <div className="about-us__vision">
+      <div className="about-us-vision">
         <h2>Vision</h2>
         <p></p>
       </div>
