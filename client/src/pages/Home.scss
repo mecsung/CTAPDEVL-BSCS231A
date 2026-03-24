@@ -27,13 +27,13 @@
     h1 {
       color: var(--text-color);
       font-size: 3em;
-      animation-delay: 0.2s; // 👈 first
+      animation-delay: 0.2s;
     }
 
     h2 {
       color: var(--dark-text-color);
       font-size: 1.5em;
-      animation-delay: 0.4s; // 👈 follows after
+      animation-delay: 0.4s; 
     }
 
     &::before {
@@ -45,7 +45,7 @@
       left: 0;
       transform: translateY(50%);
       background-color: var(--dark-text-color);
-      z-index: 2; // 👈 stays above text (so it looks like text comes from behind)
+      z-index: 2;
     }
   }
 
