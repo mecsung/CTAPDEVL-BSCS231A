@@ -1,3 +1,5 @@
+// Link is a component from react-router-dom that allows us to create links 
+// to different routes in our application
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
