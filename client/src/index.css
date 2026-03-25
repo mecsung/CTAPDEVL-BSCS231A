@@ -1,9 +1,9 @@
 :root {
-  --primary-color: rgb(255, 225, 93);
-  --secondary-color: rgb(255, 27, 27);
-  --background-color: rgb(255, 255, 255);
-  --navbar-color: rgb(193, 255, 122);
-  --text-color: rgb(255, 174, 0);
+  --primary-color: #5B99C2;
+  --secondary-color: #229799;
+  --background-color: #F5F5F5;
+  --navbar-color: #424242;
+  --text-color: #f5f5f5;
 }
 
 body {
@@ -16,8 +16,192 @@ header {
   background-color: var(--navbar-color);
 }
 
-header .container {
+header .navbar-container {
   margin: 0 auto;
-  height: auto;
+  height: 4rem;
   display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .navbar-container h1 {
+  color: var(--primary-color);
+  margin: 0;
+  padding-left: 20px;
+}
+
+header .navbar-container ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header .navbar-container ul li {
+  margin: 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+header .navbar-container ul li a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing .land-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--primary-color);
+  padding: 40px;
+  margin: 5em;
+  border-radius: 10px;
+}
+
+.landing h1 {
+  font-size: 48px;
+  color: var(--text-color);
+}
+
+.landing input {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: var(--background-color);
+}
+
+/* From Uiverse.io by njesenberger */
+.landing button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--background-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.landing .button {
+  appearance: none;
+  position: relative;
+  border: 0;
+  padding: 0 10px 14px;
+  min-width: 11em;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.landing .button-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #f5f5f5;
+  background: linear-gradient(160deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 8px 18px rgba(34, 151, 153, 0.35);
+  transform: translateY(0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.landing .button-bottom {
+  position: absolute;
+  z-index: 0;
+  left: 6px;
+  right: 6px;
+  bottom: 4px;
+  height: calc(100% - 12px);
+  border-radius: 10px;
+  background: #1c7d7f;
+  transition: transform 0.22s ease;
+}
+
+.landing .button-base {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - 4px);
+  border-radius: 12px;
+  background: rgba(66, 66, 66, 0.25);
+}
+
+.landing .button:hover {
+  animation-play-state: paused;
+}
+
+.landing .button:hover .button-top {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 22px rgba(34, 151, 153, 0.45);
+  filter: brightness(1.04);
+}
+
+.landing .button:hover .button-bottom {
+  transform: translateY(2px);
+}
+
+.landing .button:active .button-top {
+  transform: translateY(5px);
+  box-shadow: 0 6px 12px rgba(34, 151, 153, 0.25);
+}
+
+.landing .button:active .button-bottom {
+  transform: translateY(-2px);
+}
+
+@keyframes button-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home h1 {
+  font-size: 32px;
+  color: var(--primary-color);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about h1 {
+  font-size: 32px;
+  color: var(--primary-color);
+}
+
+.about p {
+  max-width: 50em;
+  text-align: center;
+  font-size: 18px;
 }

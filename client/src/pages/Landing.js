@@ -1,10 +1,16 @@
 const Landing = () => {
     return (
         <div className="landing">
-            <h1>Welcome to noots</h1>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button type="submit">Login ka boi</button>
+            <div className="land-container">
+                <h1>Welcome to traveler!</h1>
+                <input type="text" placeholder="Username" />
+                <input type="password" placeholder="Password" />
+                <button type="submit" className="button">
+                    <div className="button-top">Login ka boi</div>
+                    <div className="button-bottom"></div>
+                    <div className="button-base"></div>
+                </button>
+            </div>
         </div>
     );
 }
