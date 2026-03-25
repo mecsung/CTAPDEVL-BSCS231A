@@ -6,9 +6,7 @@ const About = () => {
             <section className="about-section">
                 <h2>The Team</h2>
                 <ul>
-                    <li><strong>Elliah Rain S. Panopio</strong> — Frontend Developer</li>
-                    <li><strong>Elliah Rain S. Panopio</strong> — Backend Developer</li>
-                    <li><strong>Elliah Rain S. Panopio</strong> — UI/UX Designer</li>
+                    <li><strong>Elliah Rain S. Panopio</strong> — Frontend Developer, Backend Developer, UI/UX Designer</li>
                 </ul>
             </section>
 
