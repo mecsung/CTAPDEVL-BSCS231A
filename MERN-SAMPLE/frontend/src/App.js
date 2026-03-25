@@ -9,24 +9,24 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-        <Navbar/>
+        <Navbar />
 
-        <div classname="pages">
+        <div className="pages">
           <Routes>
 
             <Route
               path='/'
-              element={<Home/>}
+              element={<Home />}
             />
 
             <Route
               path='/login'
-              element={<Login/>}
+              element={<Login />}
             />
 
             <Route
               path='/about'
-              element={<About/>}
+              element={<About />}
             />
 
           </Routes>

@@ -1,15 +1,24 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <header>
+        <header className="site-header">
             <div className="container">
-                <h1>Pusong Ligaw</h1>
-                <nav>
+                <div className="brand">
+                    <p className="brand-tag">Not just notes… amazing notes</p>
+                    <h1>Spidey Notes</h1>
+                </div>
+                <nav aria-label="Main navigation">
                     <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/about">About</Link></li>
+                        <li>
+                            <NavLink to="/">Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/login">Login</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/about">About</NavLink>
+                        </li>
                     </ul>
                 </nav>
             </div>
