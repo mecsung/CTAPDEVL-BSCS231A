@@ -18,7 +18,7 @@ function Contact() {
     <div className="pages">
       <div className="card">
         <h1>Contact Us</h1>
-        <p>Have questions or feedback? Fill out the form below and we’ll get back to you.</p>
+        <p>May katanungan ka ba? Wag mo sakin itanong.</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

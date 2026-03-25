@@ -7,7 +7,7 @@ function Home() {
       {/* Hero Section */}
       <div className="hero">
         <h1>Welcome to CTAPDEVL</h1>
-        <p>Explore our awesome React app with modern UI and routing!</p>
+        <p>Sheesh!</p>
         <button className="btn">Get Started</button>
       </div>
 
@@ -16,8 +16,7 @@ function Home() {
       <div className="card">
         <h1>About Us</h1>
         <p>
-          We are building an intuitive frontend experience using React,
-          React Router, and modern CSS.
+          its me lucky
         </p>
       </div>
     </div>
