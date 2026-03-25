@@ -20,9 +20,14 @@ function App() {
           </Routes>
         </div>
 
-        {/* <div className='pages-home'>
-          <Home />
-        </div> */}
+        <div className="pages">
+          <Routes>
+              <Route
+                path=''
+                element={ <Home/> }
+              />
+          </Routes>
+        </div>
 
       </BrowserRouter>
     </div>

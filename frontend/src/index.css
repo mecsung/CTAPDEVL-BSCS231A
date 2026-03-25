@@ -15,17 +15,17 @@ code {
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --primary-color: #758467;
-  --secondary-color: #819171;
-  --background-color: #DFE6DA;
-  --navbar-color: #675746;
+  --primary-color: #A1BC98;
+  --secondary-color: #D2DCB6;
+  --background-color: #F1F3E0;
+  --navbar-color: #778873;
   --text-color: #f1f1f1;
 }
 
 body {
   background: var(--background-color);
   margin: 0;
-  font-family: 'Roboto'
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 header {
@@ -37,6 +37,22 @@ header .container {
   margin: 0 auto;
   height: 50px;
   display: flex;
+  margin-left: 4vh;
 }
 
+nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 4vh;
+  margin-left: 125vh;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.nav-link {
+  text-decoration: none;
+  margin-left: 5.5vh;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
