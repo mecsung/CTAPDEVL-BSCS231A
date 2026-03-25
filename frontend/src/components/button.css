@@ -1,0 +1,49 @@
+.btn-primary {
+  background: var(--color-background);
+  color: var(--color-primary);
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.01);
+  background: #008FCC;
+  color: var(--color-background);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-background);
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-background);
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.01);
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+.btn-destructive {
+  background: #CBD5E1; 
+  color: var(--color-text);     
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-destructive:hover {
+  transform: scale(1.01);
+  background: #F5F5F5;
+  color: #000000;
+}

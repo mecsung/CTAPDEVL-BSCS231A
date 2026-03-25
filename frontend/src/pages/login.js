@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import InputField from "../components/inputfield";
+import Button from "../components/button";
+import "./login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -6,38 +9,36 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Logging in with Email: ${email}, Password: ${password}`);
+    console.log("Login attempt:", { email, password });
+    // Add your login logic here (API call, validation, etc.)
   };
 
   return (
-    <div className="page login-page">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-        </div>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login-title">Login</h2>
+        
+        <InputField
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-        </div>
+        <InputField
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-        <button type="submit" className="btn btn-primary">
+        <Button variant="primary" type="submit">
           Login
-        </button>
+        </Button>
       </form>
     </div>
   );

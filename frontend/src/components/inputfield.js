@@ -1,4 +1,4 @@
-import "../index.css";
+import "./inputfield.css";
 
 const InputField = ({
     label,
@@ -8,17 +8,19 @@ const InputField = ({
     onChange, 
     required = false,
 }) => {
-    <div className="input-container">
-        {label && <label className="input-label">{label}</label>}
-        <input 
-            className="input-field"
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            required={required}
-        />
-    </div>
-}
+    return (
+        <div className="input-container">
+            {label && <label className="input-label">{label}</label>}
+            <input 
+                className="input-field"
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                required={required}
+            />
+        </div>
+    );
+};
 
 export default InputField;

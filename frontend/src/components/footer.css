@@ -1,0 +1,31 @@
+.footer {
+  background-color: var(--color-background);
+  border-top: 1px solid #e5e7eb;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.footer p {
+  margin: 0.25rem 0;
+  font-weight: 500;
+}
+
+.footer-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #008FCC;
+  transform: scale(1.05);
+}
+
+.footer-link:active {
+    color: #0077A8;
+}

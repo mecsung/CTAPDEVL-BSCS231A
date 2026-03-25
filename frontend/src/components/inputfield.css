@@ -1,0 +1,25 @@
+.input-container {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.input-field {
+    width: 95%;
+    padding: 0.5rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: var(--color-green);
+    box-shadow: 0 0 4px var(--color-green);
+    outline: none;
+}

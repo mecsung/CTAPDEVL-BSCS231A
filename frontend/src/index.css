@@ -1,0 +1,65 @@
+/* Color Variables */
+:root {
+--color-primary: #00A1F1;
+--color-green: #7CBB00;
+--color-red: #F65314;
+--color-yellow: #FFBB00;
+--color-background: #FFFFFF;
+--color-secondary: ;
+--color-text: #1F1F1F;
+--color-neutral-50: #8e99a3;
+}
+
+/* Global Styles */
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+margin: 0;
+font-family: 'Inter', sans-serif;
+background-color: var(--color-background);
+color: var(--color-text);
+}
+
+* {
+  font-family: inherit;
+}
+
+/* Utilit Classes */
+.text-primary {
+color: var(--color-primary);
+}
+
+.text-green {
+color: var(--color-green);
+}
+
+.text-red {
+color: var(--color-red);
+}
+
+.text-yellow {
+color: var(--color-yellow);
+}
+
+.bg-primary {
+background-color: var(--color-primary);
+color: var(--color-background);
+}
+
+.bg-green {
+background-color: var(--color-green);
+color: var(--color-background);
+}
+
+.bg-red {
+background-color: var(--color-red);
+color: var(--color-background);
+}
+
+.bg-yellow {
+background-color: var(--color-yellow);
+color: var(--color-background);
+}
