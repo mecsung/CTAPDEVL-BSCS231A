@@ -3,8 +3,8 @@ const About = () => {
         <div className="about">
             <h1>About Page</h1>
             <form>
-                <h5>This is the About Page</h5>
-                <button type="SeeMore">See More</button>
+                <p>This is a simple implementation of Frontend Framework for React App. It contains a basic home page and login page that asks users for a username and password.</p>
+                <button type="LearnMore">Learn More</button>
             </form>
          </div>
     );
