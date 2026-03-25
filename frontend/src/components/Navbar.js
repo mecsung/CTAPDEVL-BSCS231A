@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <header>
-            <div className="container">
-                <h1>My App</h1>
+            <div className="header-container">
+                <Link to="/" className="logo">
+                    <h1>Notes System</h1>
+                </Link>
                 <nav>
-                    <ul>  
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                    </ul>
+                    <Link to="/">Home</Link>
+                    <Link to="/about">About Us</Link>
+                    <Link to="/login">Login</Link>
                 </nav>
             </div>
         </header>
     );
-}
+};
 
 export default Navbar;
