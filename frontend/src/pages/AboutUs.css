@@ -1,0 +1,40 @@
+.about-us {
+  text-align: center;
+  padding: 30px;
+}
+
+.about-us h1 {
+  color: #0f3d91;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.about-description {
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-us button {
+  background-color: #f4c542;
+  color: #0f3d91;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.about-us button:hover {
+  background-color: #ffd95e;
+}
