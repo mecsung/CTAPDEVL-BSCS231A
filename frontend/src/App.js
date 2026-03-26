@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Login from './pages/Login';
 import About from './pages/About';
 import Navbar from './components/navbar';
+import Footer from './components/footer';
 
 function App() {
   return (
@@ -23,12 +24,14 @@ function App() {
             element={<Login />}
             />
         <Route
-            path='/About'
+            path='/about'
             element={<About />}
             />
           </Routes>
         
         </div>
+
+      <Footer />
       </BrowserRouter>
    </div>
   );

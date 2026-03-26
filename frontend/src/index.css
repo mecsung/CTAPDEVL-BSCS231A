@@ -1,13 +1,136 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body, html {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6fb;
+  color: #333;
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pages{
+  flex: 1;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  
+}
+
+header {
+  background-color: #232424;
+}
+
+/*navbar*/
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #d1d5db;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #60a5fa;
+}
+
+.pages {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.pages > * {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* pooter */
+footer {
+  background: #1f2937;
+  color: #d1d5db;
+  text-align: center;
+  padding: 1px 0;
+  margin-top: 20px;
+}
+
+footer .container{
+  color:#ffa600
+}
+
+/* login pej */
+.login {
+  width: 100%;
+  max-width: 400px;
+  margin:  auto;
+  background-color: #373a3a;
+  
+}
+
+.login h1 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.login input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.login input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.login button {
+  padding: 12px;
+  background: #1160d6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login button:hover {
+  background: #2563eb;
 }
