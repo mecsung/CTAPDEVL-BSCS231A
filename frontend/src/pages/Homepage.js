@@ -1,3 +1,5 @@
+import '../styles/Homepage.css';
+
 const Homepage = () => {
     return (
         <div className="home">
