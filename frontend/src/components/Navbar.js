@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="navbar">
       <h2>My React App</h2>
-
-      <ul>
+      <ul className="nav-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
+        <li><Link to="/login">Login</Link></li>
       </ul>
     </nav>
   );

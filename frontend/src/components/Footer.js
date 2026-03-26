@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer>
+    <footer className="footer">
       <p>© 2026 My React App</p>
     </footer>
   );
