@@ -3,6 +3,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Navbar from './components/navbars';
 import About from './pages/about';
+import Logout from './pages/logout';
 
 function App() {
   return (
@@ -14,17 +15,18 @@ function App() {
         <div className="pages">
           <Routes>
               <Route
-                path=''
+                path='/login'
                 element={ <Login/> }
               />
-          </Routes>
-        </div>
 
-        <div className="pages">
-          <Routes>
               <Route
-                path=''
+                path='/'
                 element={ <Home/> }
+              />
+          
+              <Route
+                path='/logout'
+                element={ <Logout/> }
               />
           </Routes>
         </div>

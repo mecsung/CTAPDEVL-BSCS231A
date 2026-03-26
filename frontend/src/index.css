@@ -40,6 +40,10 @@ header .container {
   margin-left: 4vh;
 }
 
+header .container h1 {
+  color: var(--text-color);
+}
+
 nav {
   display: flex;
   gap: 1rem;
@@ -50,9 +54,88 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  margin-left: 5.5vh;
-  color: black;
+  margin-left: 6vh;
+  color: var(--text-color);
   font-size: 1.2rem;
   font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  animation: spin 0.5s linear infinite;
+  cursor: pointer;
+}
+
+.about h1, p {
+  margin-left: 4vh;
+  margin-top: 4vh;
+  color: var(--navbar-color);
+}
+
+.home {
+  text-align: center;
+  font-size: xx-large;
+}
+
+.home h1 {
+  color: var(--navbar-color);
+  text-align: center;
+}
+
+.login {
+  max-width: 400px;
+  margin: 100px auto 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login h1 {
+  color: var(--navbar-color);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3vh;
+}
+
+.login input {
+  padding: 0.75rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.login input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.login button {
+  padding: 0.75rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login button:hover {
+  background: var(--navbar-color);
+} 

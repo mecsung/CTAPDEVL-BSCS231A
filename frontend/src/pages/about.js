@@ -1,14 +1,8 @@
 const About = () => {
     return (
         <div className="about">
-            <h1>About me:</h1>
-            <ul>
-                <li>simple tao pero maangas</li>
-                <li>tahimik pero may ibubuga</li>
-                <li>angasan ko pa ba ??</li>
-            </ul>
-            
-
+            <h1>About the App: </h1>
+            <p>Welcome to AppNote! This is a simple note-taking app built with React and Node.js.</p>
         </div>
     )
 }
