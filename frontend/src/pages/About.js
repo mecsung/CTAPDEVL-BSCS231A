@@ -3,6 +3,7 @@ const About = () => {
         <div className="about">
             <h1>About Us</h1>
             <h2>Shrek Script</h2>
+            
             <p> Once upon a time there was a lovely 
                 princess. But she had an enchantment 
                 upon her of a fearful sort which could 
@@ -21,7 +22,9 @@ const About = () => {
                Allstar - by Smashmouth begins to play. Shrek goes about his 
                day. While in a nearby town, the villagers get together to go 
                after the ogre.</p>
-            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGxldmIweWU5MjN2N3dmd2p4em1scjF2cmQ5MG4xamR1aXFkNHF3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l41YeEfEJyDbGIuwE/giphy.gif"></img>
+
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGxldmIweWU5MjN2N3dmd2p4em1scjF2cmQ5MG4xamR1aXFkNHF3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l41YeEfEJyDbGIuwE/giphy.gif"
+            className="about-image" />
         </div>
     )
 }
