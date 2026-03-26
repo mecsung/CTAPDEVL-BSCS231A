@@ -91,7 +91,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   border-radius: 4em 4em 0 0;
   color: #131313;
 }
@@ -128,7 +128,7 @@ body {
 .login {
   /* border: 1px solid red; */
   background-color: #ffffff;
-  height: 100vh;
+  height: 80vh;
   border-radius: 4em 4em 0 0;
   color: #131313;
   overflow: hidden;
@@ -141,7 +141,7 @@ body {
     align-items: center;
     justify-self: center;
     width: 30%;
-    margin: 5%;
+    margin: 3%;
     padding: 8em 3em;
     border-radius: 1.5em;
     background-color: #f4f4f4;
@@ -193,7 +193,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   border-radius: 4em 4em 0 0;
   color: #131313;
 }
@@ -248,3 +248,33 @@ body {
       margin: 0 0 0 0;
     }
 
+
+/* Footer */
+footer {
+  /* border: 1px solid red; */
+  background-color: #131313;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5%;
+}
+
+  .footer-container {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+  }
+
+  .footer-container p {
+    /* border: 1px solid red; */
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  .footer-container .left-information, .footer-container .right-information {
+    /* border: 1px solid red; */
+    list-style: none;
+  }

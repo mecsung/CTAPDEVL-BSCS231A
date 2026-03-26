@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <header>
             <div className = "container">
-                <h1>My App</h1>
+                <h1>My App ⋆✴︎˚｡⋆ ⊹₊</h1>
                 <nav>
                     <li><FontAwesomeIcon icon={faHouse} className="home-icon" /><Link to= '/'>Home</Link></li>
                     <li><FontAwesomeIcon icon={faUser} className="user-icon" /><Link to= '/login'>Login</Link></li>
