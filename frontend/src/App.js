@@ -10,26 +10,17 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-      <Navbar/>
-      <About/>
-        <div className="pages">
-          <Routes>
-              <Route
-                path='/login'
-                element={ <Login/> }
-              />
+      <Navbar />
+      <div className="pages">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/logout" element={<Login />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/logout" element={<Logout />} />
 
-              <Route
-                path='/'
-                element={ <Home/> }
-              />
-          
-              <Route
-                path='/logout'
-                element={ <Logout/> }
-              />
-          </Routes>
-        </div>
+        </Routes>
+      </div>
 
       </BrowserRouter>
     </div>
