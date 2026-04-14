@@ -1,23 +1,34 @@
+import { useEffect, useState } from "react";
+import NoteData from "../components/NoteData";
+import NoteForm from "../components/NoteForm";
 import "./Home.css";
 
 const Home = () => {
+  const [notes, setNotes] = useState(null);
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      const response = await fetch("/api/notes");
+      const json = await response.json();
+
+      if (response.ok) {
+        setNotes(json);
+      }
+    };
+
+    fetchNotes();
+  }, []);
+
   return (
     <div className="home">
-      <h1>Welcome to MatthewNote</h1>
+      <h1>Whats up homie</h1>
+      <NoteForm />
 
-      <img
-        src="https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/11/morty-smith-from-rick-and-morty.jpg?w=1200&h=675&fit=crop"
-        alt="Morty Smith"
-        className="home-image"
-      />
-
-      <p className="home-description">
-        Aw jeez, welcome to MatthewNote. This is where you can keep your notes,
-        ideas, and important reminders in one place, y-you know? It is simple,
-        easy to use, and really helpful when your mind is all over the place.
-      </p>
-
-      
+      <div className="notes">
+        {notes && notes.map((note) => (
+          <NoteData key={note._id} note={note} />
+        ))}
+      </div>
     </div>
   );
 };
