@@ -2,14 +2,14 @@
 .home {
   width: 100%;
   padding: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
 }
 .home .home-greetings {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.5em;
   padding-left: 1em;
   position: relative;
@@ -43,12 +43,93 @@
   background-color: var(--dark-text-color);
   z-index: 2;
 }
+.home .home-greetings .note-form {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.home .home-greetings .note-form .form-header {
+  color: var(--text-color);
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+.home .home-greetings .note-form input,
+.home .home-greetings .note-form textarea {
+  padding: 0.5em;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--components-bg-color);
+  color: var(--text-color);
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+.home .home-greetings .note-form input:focus,
+.home .home-greetings .note-form textarea:focus {
+  outline: none;
+  background-color: var(--components-hover-bg-color);
+}
+.home .home-greetings .note-form button {
+  padding: 0.5em;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--btn-color);
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.home .home-greetings .note-form button:hover {
+  background-color: var(--btn-hover);
+}
 @keyframes slideInLeft {
   to {
     opacity: 1;
     transform: translateX(0);
     filter: blur(0);
   }
+}
+.home .list-wrapper {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-dark-color);
+  padding: 1em;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.home .list-wrapper .list-header {
+  font-size: 2em;
+  color: var(--text-color);
+}
+.home .list-wrapper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.home .list-wrapper ul li {
+  background-color: var(--components-bg-color);
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.home .list-wrapper ul li h3 {
+  margin: 0 0 0.5em 0;
+  color: var(--text-color);
+}
+.home .list-wrapper ul li p {
+  margin: 0;
+  color: var(--light-text-color);
+}
+.home .list-wrapper ul li:hover {
+  background-color: var(--components-hover-bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 /*# sourceMappingURL=Home.css.map */

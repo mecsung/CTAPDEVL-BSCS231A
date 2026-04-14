@@ -2,9 +2,18 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // Initialization of imports, packages and local variables
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:3000", // frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if you use cookies/auth headers
+  }),
+);
+
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 const noteRoutes = require("./routes/note.router.js");
