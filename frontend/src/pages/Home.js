@@ -22,7 +22,6 @@ const Home = () => {
         <div className="home">
             <NoteForm />
             <h1>What's up!</h1>
-            {/* <button>Click Me</button> */}
 
             <div className="notes">
             {notes && notes.map((note) => (
