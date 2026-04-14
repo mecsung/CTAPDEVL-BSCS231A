@@ -6,7 +6,11 @@ const Navbar = () => {
             <div className="container">
                 <div className="brand">
                     <p className="brand-tag">Not just notes… amazing notes</p>
-                    <h1>Spidey Notes</h1>
+                    <h1>
+                        <NavLink to="/" className="brand-link">
+                            Spidey Notes
+                        </NavLink>
+                    </h1>
                 </div>
                 <nav aria-label="Main navigation">
                     <ul>

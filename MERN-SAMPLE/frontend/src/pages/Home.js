@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
+    const navigate = useNavigate()
+
     return (
         <main className="page-shell home-page">
             <section className="hero">
@@ -9,8 +13,20 @@ const Home = () => {
                     Track class reminders, project tasks, and sudden genius moments in one place.
                 </p>
                 <div className="hero-actions">
-                    <button type="button" className="btn-primary">Create A Note</button>
-                    <button type="button" className="btn-secondary">View Notes</button>
+                    <button
+                        type="button"
+                        className="btn-primary"
+                        onClick={() => navigate("/create-note")}
+                    >
+                        Create A Note
+                    </button>
+                    <button
+                        type="button"
+                        className="btn-secondary"
+                        onClick={() => navigate("/notes")}
+                    >
+                        View Notes
+                    </button>
                 </div>
             </section>
 
@@ -30,6 +46,8 @@ const Home = () => {
             </section>
         </main>
     );
+
+    
 }
 
 export default Home;
