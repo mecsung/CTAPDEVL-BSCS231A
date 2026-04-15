@@ -13,7 +13,7 @@ router.get('/', getNote);
 router.get('/:id', getNotebyId);
 
 //POST
-router.post('/:id', createNote);
+router.post('/', createNote);
 
 
 //UPDATE

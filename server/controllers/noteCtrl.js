@@ -23,12 +23,11 @@ const createNote = async (req, res) => {
 
     try {
         const note = await Note.create({ title, content });
-        res.status(200).json(note);
+        return res.status(201).json(note);
     }
     catch (error) {
-        res.json({ error: error.message });
+        return res.status(400).json({ error: error.message });
     }
-    res.json({ message: "May note ka na" })
 };
 
 
