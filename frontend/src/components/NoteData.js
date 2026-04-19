@@ -1,19 +1,11 @@
-const Home = () => {
-    <div className="notes">
-        {notes && notes.map((note) => (
-            <noteData key={note._id} note={note} />
-        ))}
-    </div>
-}
-
-const NoteData = ({note}) => {
+const NoteData = ({ note }) => {
     return (
-        <div className="note-data">  
-            <h2>{note.title}</h2>
-            <p><strong>Content:</strong> {note.content}</p>
-        </div>
+      <div className="note-data">
+        <h2>{note.title}</h2>
+        <p>{note._id}</p>
+        <p>{note.content}</p>
+      </div>
     );
-};
-
-export default NoteData;
-
+  };
+  
+  export default NoteData;

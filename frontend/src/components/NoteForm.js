@@ -1,58 +1,70 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const NoteForm = () => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+const NoteForm = ({ onAddNote }) => {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (!title.trim() || !content.trim()) return;
 
-        const note = { title, content };
+        setLoading(true);
+        setError(null);
 
-        const response = await fetch("/api/notes", {
-            method: "POST",
-            body: JSON.stringify(note),
-            headers: {
-                "Content-Type": "application/json"
+        try {
+            const response = await fetch('/api/notes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: title.trim(), content: content.trim() }),
+            });
+
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Unable to create note');
             }
-        });
-        const json = await response.json();
+            else {
+                setContent('');
+                setTitle('');
+            }
 
-        if (response.ok) {
-            setTitle("");
-            setContent("");
-            setError(null); // Clear any previous errors on success
-            console.log("New note added");
-        } else {
-            setError(json.error);
-            console.error("Failed to add note", json);
+            const newNote = await response.json();
+            onAddNote?.(newNote);
+            setTitle('');
+            setContent('');
+        } catch (err) {
+            setError(err.message);
+            console.error('Error saving note:', err);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        /* 1. Added onSubmit handler here */
-        <form className="create" onSubmit={handleSubmit}>
-            <h3>Add New Note</h3>
-            
-            <label>Note Title:</label>
+        <form className="note-form" onSubmit={handleSubmit}>
+            <h3>Add new note</h3>
             <input
                 type="text"
+                placeholder="Note title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                className="note-input"
             />
-            
-            <label>Note Content:</label>
             <textarea
+                placeholder="Write your note here..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                className="note-textarea"
+                rows={4}
             />
-
-            <button type="submit">Add Note</button>
-            
-            {error && <div className="error" style={{color: 'red'}}>{error}</div>}
+            {error && <p className="note-error">{error}</p>}
+            <button type="submit" className="btn-" disabled={loading || !title.trim() || !content.trim()}>
+                {loading ? 'Saving...' : 'Add Note'}
+            </button>
         </form>
     );
-}
+};
 
 export default NoteForm;
