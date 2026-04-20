@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import AboutUs from './pages/AboutUs';
 import Navbar from './components/Navbar';
+import DigitalSignatureProfile from './pages/DigitalSignatureProfile';
 
 // function App() is the main component of the application 
 // it sets up the routing for the app using BrowserRouter, Routes, 
@@ -35,6 +36,10 @@ function App() {
 
             <Routes>
               <Route path="/about" element={<AboutUs />} />
+            </Routes>
+
+            <Routes>
+              <Route path="/digitalSignatureProfile" element={<DigitalSignatureProfile />} />
             </Routes>
           </div>
         </BrowserRouter>

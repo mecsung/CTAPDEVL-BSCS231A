@@ -11,8 +11,8 @@ const app = express();
 // and listens on a specific port (3000 in this case)
 // If the server is successfully running, it automatically calls the arrow function
 // The arrow function is a callback that runs console.log to tell it's working
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+app.listen(4000, () => {
+    console.log("Server is running on port 4000");
 }); 
 
 //#endregion

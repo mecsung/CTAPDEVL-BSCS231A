@@ -1,7 +1,20 @@
 body {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.note-data {
+  border: 1px solid gray;
+  padding: 5px;
+  margin: 5px 0 5px 0;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+}
+
+h2, p {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
 }
