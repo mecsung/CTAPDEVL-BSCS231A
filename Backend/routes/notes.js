@@ -1,14 +1,21 @@
 const express = require('express');
 
 const router = express.Router();
+const { createNote, deleteNote, updateNote, getNotes, getNoteByID } = require('../controller/noteController');
 
-router.get('/', (req, res) => {
-    //    res.send('Hello World');
-    res.json({
-        message: 'Hello World',
-        name: 'John Doe',
-        age: 67
-    });
-})
+//GET notes
+router.get('/', getNotes);
 
-module.exports = router;
+//DISPLAY note by ID
+router.get('/:id', getNoteByID);
+
+//POST/CREATE
+router.post('/', createNote);
+
+//DELETE a ntoe
+router.delete('/:id', deleteNote);
+
+//UPDATE a note
+router.patch('/:id', updateNote);
+
+module.exports = router;   
