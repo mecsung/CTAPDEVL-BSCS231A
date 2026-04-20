@@ -1,10 +1,11 @@
 import "./Home.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NoteData } from "../components/NoteData.js";
 import { NoteForm } from "../components/NoteForm.js";
+import { useNotesContext } from "../hooks/useNotesContext.js";
 
 export default function Home() {
-  const [notes, setNotes] = useState([]);
+  const { state, dispatch } = useNotesContext();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -15,7 +16,7 @@ export default function Home() {
         throw new Error(data.message || "Failed to fetch notes");
       }
 
-      setNotes(data);
+      dispatch({ type: "SET_NOTES", payload: data });
     };
     fetchNotes();
   }, []);
@@ -28,7 +29,7 @@ export default function Home() {
         <NoteForm />
       </div>
 
-      <NoteData key={notes._id} notes={notes} />
+      <NoteData notes={state.notes} />
     </div>
   );
 }

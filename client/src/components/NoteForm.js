@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { NoteData } from "./NoteData";
+import { useNotesContext } from "../hooks/useNotesContext.js";
 
 export function NoteForm() {
+  const { dispatch } = useNotesContext();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -17,9 +20,9 @@ export function NoteForm() {
 
     if (response.ok) {
       const newNote = await response.json();
-      console.log("Note created:", newNote);
       setTitle("");
       setContent("");
+      dispatch({ type: "CREATE_NOTE", payload: newNote.note });
     } else {
       const errorData = await response.json();
       console.error("Error creating note:", errorData.message);

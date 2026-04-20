@@ -81,6 +81,7 @@
   padding: 1em;
   display: flex;
   justify-content: center;
+  overflow-y: hidden;
 }
 
 /*# sourceMappingURL=index.css.map */
