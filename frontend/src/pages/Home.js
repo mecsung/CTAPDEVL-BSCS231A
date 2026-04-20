@@ -17,7 +17,10 @@ const Home = () => {
             }
         };
         fetchNotes();
-    }, [dispatch]); 
+    }, [dispatch]);
+
+    const notesArray = Array.isArray(notes) ? notes : [];
+
     return (
         <div className="home">
             <h1>Welcome to Notes System</h1>
@@ -26,11 +29,12 @@ const Home = () => {
 
             <div className="notes">
                 {notes && notes.map((note) => (
-                    <NoteData key={note._id} note={note} />
+                <NoteData key={note._id} note={note} />
                 ))}
             </div>
         </div>
     );
 };
+
 
 export default Home;

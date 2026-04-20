@@ -22,12 +22,11 @@ const createNote = async (req, res) => {
     const { title, content } = req.body;
     try {
         const note = await Note.create({ title, content });
-        res.status(200).json(note);
+        return res.status(200).json(note);
     }
     catch(error) {
-        res.status(400).json({ error: error.message });
+        return res.status(400).json({ error: error.message });
     }
-    res.json({ message: 'Note created sucessfully!' });
 }
 
 // Delete a note by ID
