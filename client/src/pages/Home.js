@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from "react";
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
+import { useNotesContext } from "../hooks/useNotesContext";
 
 const Home = () => {
     const [notes, setNotes] = useState(null);
