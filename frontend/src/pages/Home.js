@@ -19,7 +19,7 @@ const Home = () => {
     };
 
     fetchNotes();
-  }, [dispatch]); //display regardless none
+  }, [dispatch]); //display regardless none;
 
     return (
         <div className = "home">
