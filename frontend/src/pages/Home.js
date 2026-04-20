@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNotesContext } from "../hooks/useNotesContext";
+
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
 import "./Home.css";
 
 const Home = () => {
-  const [notes, setNotes] = useState(null);
+  const { notes, dispatch } = useNotesContext();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -12,12 +14,12 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setNotes(json);
+        dispatch({ type: "SET_NOTES", payload: json });
       }
     };
 
     fetchNotes();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">
@@ -25,9 +27,10 @@ const Home = () => {
       <NoteForm />
 
       <div className="notes">
-        {notes && notes.map((note) => (
-          <NoteData key={note._id} note={note} />
-        ))}
+        {notes &&
+          notes.map((note) => (
+            <NoteData key={note._id} note={note} />
+          ))}
       </div>
     </div>
   );
