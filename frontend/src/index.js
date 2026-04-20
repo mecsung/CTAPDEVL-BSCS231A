@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import 'semantic-ui-css/semantic.min.css';
 import './css/index.css';
 import App from './App';
+import { NotesContextProvider } from './context/NotesContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <NotesContextProvider>
+      <App />
+    </NotesContextProvider>
   </React.StrictMode>
 );
 

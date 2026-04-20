@@ -100,10 +100,109 @@
     border: 1px solid #ddd;
 }
 
-.btn-secondary:hover {
+..btn-secondary:hover {
     background-color: #f8f9fa;
     border-color: #ccc;
     transform: translateY(-3px);
+}
+
+.notes {
+    display: grid;
+    gap: 1.25rem;
+    margin: 2rem auto 0;
+    max-width: 960px;
+    text-align: left;
+}
+
+.note-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 22px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 28px 55px rgba(0, 0, 0, 0.08);
+}
+
+.note-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.9rem;
+    color: #111;
+}
+
+.note-card p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.note-card small {
+    color: #777;
+    display: block;
+    margin-top: 0.75rem;
+}
+
+.note-form {
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.06);
+    text-align: left;
+}
+
+.note-form h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #111;
+}
+
+.note-form input,
+.note-form textarea {
+    width: 100%;
+    border: 1px solid #e3e7ee;
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #111;
+    background: #f9fbff;
+}
+
+.note-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.note-form button {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.note-form button:hover {
+    background: #0062cc;
+    transform: translateY(-2px);
+}
+
+.note-error {
+    color: #d32f2f;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
 }
 
 /* Floating notes (animation & visuals) */
