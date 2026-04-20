@@ -34,7 +34,7 @@ const Home = () => {
 
                 <div className="notes-panel">
                     <div className="notes-panel__header">
-                        <h2>Your Notes</h2>
+                        <h2>Notes</h2>
                         <p>Saved entries appear here in reverse chronological order.</p>
                     </div>
 
