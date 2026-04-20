@@ -285,3 +285,16 @@ code {
     monospace;
 }
 
+.note-data {
+  border: 1px solid gray;
+  padding: 5px;
+  
+}
+
+.create {
+  border: 1px solid gray;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
