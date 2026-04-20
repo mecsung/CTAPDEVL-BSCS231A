@@ -1,77 +1,59 @@
 import { useState } from 'react';
 import { useNotesContext } from "../context/useNotesContext";
 
+
 const NoteForm = () => {
-    const { dispatch } = useNotesContext(); // Using context!
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const { dispatch } = useNotesContext();
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [error, setError] = useState(null);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        
-        if (!title.trim() || !content.trim()) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        setLoading(true);
-        setError(null);
+    // Handle form submission logic here
+    const note = { title, content };
 
-        const note = { title: title.trim(), content: content.trim() };
+    const response = await fetch('/api/notes', {
+        method: 'POST',
+        body: JSON.stringify(note),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
-        try {
-            const response = await fetch('/api/notes', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(note),
-            });
+    const json = await response.json();
 
-            const json = await response.json(); // Parse the response once
-
-            if (!response.ok) {
-                // If backend validation fails, use the error message from server
-                setError(json.error || 'Unable to create note');
-            } else {
-                // SUCCESS:
-                setError(null);
-                setTitle('');
-                setContent('');
-                
-                // Update the global state so the UI refreshes instantly
-                dispatch({ type: 'CREATE_NOTE', payload: json });
-            }
-        } catch (err) {
-            setError("Could not connect to the server.");
-            console.error('Error saving note:', err);
-        } finally {
-            setLoading(false);
+        if (response.ok) {
+            setTitle('');
+            setContent('');
+            // console.log('New note added:', json);
+            dispatch({ type: 'CREATE_NOTE', payload: json})
+        } else {
+            console.error('Error adding note:', json);
         }
     };
 
-    return (
-        <form className="create" onSubmit={handleSubmit}>
-            <h3>Add a New Note</h3>
+  return (
+    <form className='form-create' onSubmit={handleSubmit}>
+      <h3>Add New Note</h3>
+      <label>Note Title:</label>
+      <input
+        type="text" 
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-            <label>Note Title:</label>
-            <input
-                type="text"
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-            />
+      <label>Note Content:</label>
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      />
 
-            <label>Content:</label>
-            <textarea
-                onChange={(e) => setContent(e.target.value)}
-                value={content}
-                rows={4}
-            />
-
-            <button disabled={loading}>
-                {loading ? 'Adding...' : 'Add Note'}
-            </button>
-            
-            {error && <div className="error">{error}</div>}
-        </form>
-    );
-};
+      <button>Add Note</button>
+      {error && <div className="error">{error}</div>}
+    </form>
+  );
+}
 
 export default NoteForm;

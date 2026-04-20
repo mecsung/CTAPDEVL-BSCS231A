@@ -10,13 +10,13 @@ const Home = () => {
     // Assuming it returns { notes, dispatch }
     const { notes, dispatch } = useNotesContext();
 
-    // 2. Define the missing state for count
-    const [count, setCount] = useState(0);
+    // // 2. Define the missing state for count
+    // const [count, setCount] = useState(0);
 
-    // This effect tracks 'count' updates
-    useEffect(() => {
-        console.log("Count updated:", count);
-    }, [count]);
+    // // This effect tracks 'count' updates
+    // useEffect(() => {
+    //     console.log("Count updated:", count);
+    // }, [count]);
 
     // Fetch notes on mount
     useEffect(() => {
@@ -40,12 +40,6 @@ const Home = () => {
         <div className="home">
             <div className="main-content">
                 <h1>What's up homie</h1>
-                
-                {/* Counter Section */}
-                <div className="counter-test">
-                    <p>Count: {count}</p>
-                    <button onClick={() => setCount(count + 1)}>Click me</button>
-                </div>
 
                 <div className="notes"> 
                     {notes && notes.map((note) => (
