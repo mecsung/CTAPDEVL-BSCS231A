@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNotesContext } from "../hooks/useNotesContext";
 
 const NoteForm = () => {
     const [title, setTitle] = useState('');
