@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNotesContext } from "../hooks/useNotesContext";
 
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
 
 const Home = () => {
-  const [notes, setNotes] = useState(null)
+  // const [notes, setNotes] = useState(null)
+  const { notes, dispatch } = useNotesContext();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -12,12 +14,12 @@ const Home = () => {
       const json = await response.json() //its okay to be json for the server side
 
       if (response.ok) { 
-        setNotes(json) //to parce it for the client side
+        dispatch({ type: "SET_NOTES", payload: json }); //to parce it for the client side
       }
-    }
+    };
 
-    fetchNotes()
-  }, []) //display regardless none
+    fetchNotes();
+  }, [dispatch]); //display regardless none
 
     return (
         <div className = "home">
@@ -40,7 +42,7 @@ const Home = () => {
             </div>
         </div>
     );
-}
+};
 
 
 export default Home;
