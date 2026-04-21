@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNoteContext } from "../hooks/useNoteContext";
+import { useNotesContext } from "../hooks/useNotesContext";
 
 const NoteForm = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [error, setError] = useState(null);
 
-    const { dispatch } = useNoteContext();
+    const { dispatch } = useNotesContext();
 
     const handleSubmit = async (e) => {
         e.preventDefault();

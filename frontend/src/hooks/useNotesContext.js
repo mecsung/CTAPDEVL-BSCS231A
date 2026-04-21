@@ -1,10 +1,10 @@
 import { NoteContext } from "../context/NoteContext";
 import { useContext } from "react";
 
-export const useNoteContext = () => {
+export const useNotesContext = () => {
     const context = useContext(NoteContext)
     if (!context) {
-        throw Error("useNoteContext must be used inside a NoteContextProvider")
+        throw Error("useNotesContext must be used inside a NoteContextProvider")
     }
     return context
 }
