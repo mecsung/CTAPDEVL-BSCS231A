@@ -1,4 +1,97 @@
 /* Base */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* Layout */
+:root {
+--primary-color: #4CAF50;
+--secondary-color: #f44336;
+--background-color: #f0f0f0;
+--navbar-color: #13008e;
+--text-color: #f1f1f1;
+}
+
+body {
+  background: var(--background-color);
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  
+}
+header {
+  background-color: var(--navbar-color);
+}
+header .container {
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+header h1 {
+  color: white;
+  margin: 0;
+}
+
+.note-data {
+  border: 1px solid gray;
+  margin-bottom: 5px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+h2, p{
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+h1{
+    margin-left: 10px;
+    color: #13008e;
+    font-weight: 900;
+}
+
+.form-create {
+  border: 1px solid gray;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 30%;
+  margin-left: 10px;
+  margin-top: 10px;
+
+}
+button {
+  background: #13008e;
+  color: white;
+  border: none;
+  margin-top: 5px;
+  padding: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
