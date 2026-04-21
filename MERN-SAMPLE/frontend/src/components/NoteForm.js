@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import { useNotesContext } from "../hooks/useNotesContext";
 
 const NoteForm = () => {
+    const {dispatch } = useNotesContext()
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+        setSuccess(null);
+
         const note = { title, content };
         const response = await fetch('/api/notes', {
             method: 'POST',
@@ -19,8 +26,11 @@ const NoteForm = () => {
         if (response.ok) {
             setTitle('');
             setContent('');
+            dispatch({ type: 'CREATE_NOTE', payload: json })
+            setSuccess('Note added successfully.');
             console.log('New note added:', json);
         } else {
+            setError(json.error || 'Failed to add note.');
             console.error('Error adding note:', json);
         }
     };
@@ -49,6 +59,9 @@ const NoteForm = () => {
                     />
 
                     <button type="submit" className="btn-primary">Add Note</button>
+
+                    {success && <p className="form-message form-success">{success}</p>}
+                    {error && <p className="form-message form-error">{error}</p>}
                 </form>
             </section>
         </main>

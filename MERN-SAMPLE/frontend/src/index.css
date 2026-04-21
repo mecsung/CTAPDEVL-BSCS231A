@@ -331,6 +331,21 @@ p {
   margin-top: 0.4rem;
 }
 
+.form-message {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.form-success {
+  color: #8bf5b7;
+}
+
+.form-error {
+  color: #ff9cab;
+}
+
 .notes-page-shell {
   display: grid;
   place-items: center;

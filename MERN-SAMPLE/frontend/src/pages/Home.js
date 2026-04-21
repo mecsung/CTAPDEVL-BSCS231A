@@ -1,7 +1,32 @@
 import { useNavigate } from "react-router-dom";
 
+import { useEffect, useState } from 'react';
+import { useNotesContext } from '../hooks/useNotesContext';
+
+import NoteData from "../components/NoteData";
+import NoteForm from "../components/NoteForm";
+
 const Home = () => {
     const navigate = useNavigate()
+
+    const { notes, dispatch } = useNotesContext()
+
+    useEffect(() => {
+        const fetchNotes = async () => {
+            try {
+                const response = await fetch('/api/notes');
+                const json = await response.json();
+
+                if (response.ok) {
+                    dispatch({ type: 'SET_NOTES', payload: json});
+                }
+            } catch (error) {
+                console.error('Failed to fetch notes:', error);
+            }
+        }
+        fetchNotes()
+
+    }, []);
 
     return (
         <main className="page-shell home-page">
