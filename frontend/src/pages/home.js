@@ -1,24 +1,46 @@
 import "../components/button.css";
 import "./home.css";
+import NoteData from "../components/noteData";
+import NoteForm from "../components/noteForm";
+import { useEffect } from "react";
+import { useNotesContext } from "../hooks/useNotesContext";
 
-const home = () => {
+const Home = () => {
+    const { notes, dispatch } = useNotesContext();
+
+    useEffect(() => {
+        const fetchNotes = async () => {
+            const response = await fetch("/api/notes");
+            const data = await response.json();
+
+            if (response.ok) {
+                dispatch({ type: "SET_NOTES", payload: data });
+            }
+        }
+        fetchNotes();
+    }, [dispatch])
+
     return (
-        <section className="hero">
-            <div className="hero-content">
-                <h1 className="hero-title">
-                    Ang imong mga Nota, Bisan asa, Bisan kanus-a
-                </h1>
-                <p className="hero-subtitle">
-                    Pagsubay sa imong mga ideya, buluhaton, ug mga pahinumdom sa usa ka limpyo nga wanang.
-                </p>
-                <div className="hero-buttons">
-                    <button className="btn-primary">Get Started</button>
-                    <button className="btn-destructive">Learn More</button>
+        <main className="home-container">
+            {/* Dedicated Form Section */}
+            <section className="form-section">
+                <div className="form-card">
+                    <h2 className="section-title">Paghimo og Bag-ong Nota</h2>
+                    <NoteForm />
                 </div>
-            </div>
-        </section>
+            </section>
 
+            {/* Notes Display Section */}
+            <section className="notes-section">
+                <h2 className="section-title">Imong mga Nota</h2>
+                <div className="notes-grid">
+                    {notes && notes.map((note) => (
+                        <NoteData key={note._id} note={note}/>
+                    ))}
+                </div>
+            </section>
+        </main>
     )
 }
 
-export default home;
+export default Home;

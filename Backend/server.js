@@ -21,7 +21,7 @@ app.use('/api/notes', notesRoutes);
 
 
 //connect to db
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(process.env.PORT, () => {
             console.log(`Server running on http://localhost:`, process.env.PORT);

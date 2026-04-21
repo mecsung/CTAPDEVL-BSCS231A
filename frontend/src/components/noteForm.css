@@ -1,0 +1,68 @@
+.note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-left: 2px;
+}
+
+.note-form input, 
+.note-form textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Interaction States */
+.note-form input:focus, 
+.note-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary, #007bff);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.note-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Error Styling */
+.error-message {
+    padding: 0.75rem;
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    color: #c53030;
+    border-radius: 8px;
+    font-size: 0.875rem;
+}
+
+/* Primary Button Styling (matching your Home page) */
+.btn-primary {
+    background-color: var(--color-primary, #007bff);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark, #0056b3);
+}
