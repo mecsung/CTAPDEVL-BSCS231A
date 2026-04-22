@@ -4,11 +4,18 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <Link to="/">
-                    <h1>Notes System  </h1>
-                </Link>
+            <h1>Notes System</h1> 
+            <nav>
+                <ul>   
+                    <li><Link to= "/" >Home</Link></li>
+                    <li><Link to= "/login" >Login</Link></li>
+                    <li><Link to= "/About" >About</Link></li>
+                </ul>
+            </nav>
+            
             </div>
         </header>
+
     );
 }
 
