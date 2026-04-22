@@ -2,35 +2,36 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Georgia", serif;
 }
-
 
 body {
-  background-color: #f1f1f8;
+  background: radial-gradient(circle at top, #0b0a1a, #000000);
+  color: #f5f5f5;
 }
 
-
+/* MAIN CONTAINER (Hogwarts parchment vibe) */
 .container {
   width: 80%;
-  margin: 100px auto 80px auto; 
-  padding: 20px;
-  background-color: #1c1a99; 
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  color: #fff; 
+  margin: 100px auto 80px auto;
+  padding: 25px;
+  background: linear-gradient(145deg, #1a1633, #0f0c1f);
+  border: 2px solid #bfa130;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(191, 161, 48, 0.3);
 }
 
-
+/* TITLE */
 .page-title {
-  font-size: 28px;
+  font-size: 32px;
   margin-bottom: 15px;
-  color: #fff;
+  color: #f0d27a;
+  text-shadow: 0 0 8px rgba(191, 161, 48, 0.6);
 }
 
-
+/* NAVBAR (Hogwarts gold banner style) */
 .navbar {
-  background-color: #bfa130; 
+  background: linear-gradient(90deg, #bfa130, #8c6b12);
   color: #120505;
   display: flex;
   align-items: center;
@@ -40,10 +41,12 @@ body {
   top: 0;
   width: 100%;
   z-index: 10;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .navbar h2 {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .nav-links {
@@ -56,15 +59,16 @@ body {
   color: #120505;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.2s;
 }
 
 .nav-links li a:hover {
-  color: #fffacd; 
+  color: #fff6c7;
 }
 
-
+/* FOOTER */
 .footer {
-  background-color: #bfa130; 
+  background: linear-gradient(90deg, #bfa130, #8c6b12);
   color: #120505;
   text-align: center;
   padding: 15px;
@@ -73,7 +77,7 @@ body {
   width: 100%;
 }
 
-
+/* LOGIN */
 .login-container form {
   display: flex;
   flex-direction: column;
@@ -88,25 +92,99 @@ body {
 .login-container label {
   font-weight: bold;
   margin-bottom: 10px;
-  color: #fff;
+  color: #f0d27a;
 }
 
 .login-container input {
   padding: 10px;
-  border-radius: 5px;
-  border: none;
-  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #bfa130;
+  background-color: #0f0c1f;
+  color: white;
 }
 
 .login-container button {
   padding: 10px;
   border: none;
-  border-radius: 5px;
-  background-color: #e6c200; 
+  border-radius: 6px;
+  background: #bfa130;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .login-container button:hover {
-  background-color: #e6c200;
+  background: #e6c200;
+}
+
+/* ========================= */
+/* 🪄 NOTES (NEW SECTION) */
+/* ========================= */
+
+.note-form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #bfa130;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.note-form h2 {
+  color: #f0d27a;
+  margin-bottom: 10px;
+}
+
+.note-form input,
+.note-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #bfa130;
+  background-color: #0f0c1f;
+  color: white;
+}
+
+.note-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.note-form button {
+  padding: 10px 15px;
+  background: #bfa130;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.note-form button:hover {
+  background: #e6c200;
+}
+
+/* NOTES LIST */
+.notes-list {
+  margin-top: 30px;
+}
+
+.notes-list h2 {
+  color: #f0d27a;
+  margin-bottom: 10px;
+}
+
+/* NOTE CARD (Hogwarts parchment cards) */
+.note-card {
+  border: 1px solid #bfa130;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #1a1633, #0b0a1a);
+  box-shadow: 0 0 10px rgba(191, 161, 48, 0.2);
+}
+
+.note-card h3 {
+  color: #f0d27a;
+  margin-bottom: 5px;
 }
