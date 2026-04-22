@@ -1,17 +1,24 @@
-function AboutUs() {
+import "./AboutUs.css";
+
+const AboutUs = () => {
   return (
-    <div className="page-container">
-      <div className="card">
-        <h1>About Us</h1>
-        <p>
-          This course provides an in-depth exploration of modern full-stack web
-          application development and emerging technologies. Students will
-          develop foundational and advanced competencies in front-end and
-          back-end development, progressing from HTML, CSS, and JavaScript
-          fundamentals to API integration and dynamic application deployment.
-        </p>
-      </div>
+    <div className="aboutus">
+      <h1>About Us</h1>
+      <p>
+        Welcome to our MERN project! This app was built to help students and
+        developers learn how to manage notes, practice CRUD operations, and
+        explore full stack development.
+      </p>
+      <p>
+        Our mission is to make learning web development practical and fun. We
+        believe in building by doing — every feature you see here is designed to
+        teach you something useful.
+      </p>
+      <p>
+        Thank you for visiting! Keep coding, keep learning, and keep improving.
+      </p>
     </div>
   );
-}
+};
+
 export default AboutUs;

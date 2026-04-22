@@ -1,90 +1,67 @@
-/* Reset */
+/* Reset defaults */
 body, html {
-  margin: 20px;
-  padding: 10px;
-  font-family: 'Poppins', Arial, sans-serif; 
-  background: #2ecc71; 
-  font-size: 18px; 
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #cfde08;
+  color: #333;
 }
 
-/* Layout */
-.app-container {
+/* Root container */
+#root {
+  min-height: 100vh;
   display: flex;
-  min-height: 150vh;
+  flex-direction: column;
 }
 
-/* Sidebar (Navbar) */
-.sidebar {
-  width: 250px;
-  background: linear-gradient(180deg, #030000, #f9f9f9);
-  padding: 20px;
-  border-right: 15px solid #ddd;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+/* Navigation bar */
+nav {
+  background-color: #4CAF50;
+  padding: 10px 20px;
 }
 
-.sidebar h2 {
-  margin-top: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2rem; /* larger title */
-  color: #2c3e50;
-  text-align: center;
-}
-
-.sidebar a {
-  display: block;
-  margin: 15px 0;
+nav a {
+  color: white;
   text-decoration: none;
-  color: #2980b9;
-  font-weight: 600;
-  font-size: 1.3rem; /* bigger links */
-  padding: 20px;
-  border-radius: 15px;
-  transition: background 0.3s, color 0.3s;
+  margin-right: 15px;
+  font-weight: bold;
 }
 
-.sidebar a:hover {
-  background: #162936;
-  color: #fff;
-}
-
-/* Main content */
-.page-container {
-  flex: 1;
-  padding: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.card {
-  background: #fff;
-  padding: 50px;
-  border-radius: 20px;
-  max-width: 600px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+nav a:hover {
+  text-decoration: underline;
 }
 
 /* Headings */
-.card h1 {
-  font-family: 'Roboto Slab', serif;
-  font-size: 3rem;
-  color: rgb(10, 46, 252);
-  margin-bottom: 60px;
+h1, h2 {
+  color: #222;
 }
 
 /* Buttons */
 button {
-  background: #f1c40f;
-  color: #333;
+  background-color: #4CAF50;
+  color: white;
   border: none;
-  padding: 14px 28px; 
-  border-radius: 6px;
+  padding: 8px 14px;
   cursor: pointer;
-  font-size: 1.2rem; 
-  font-family: 'Poppins', sans-serif;
-  transition: background 0.3s;
+  border-radius: 4px;
 }
 
 button:hover {
-  background: #d4ac0d;
+  background-color: #45a049;
+}
+
+/* Forms */
+input, textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ddff02;
+  border-radius: 4px;
+}
+
+
+.home, .login, .aboutus {
+  flex: 1;
+  padding: 20px;
 }

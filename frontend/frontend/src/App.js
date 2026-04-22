@@ -1,51 +1,24 @@
-import {BrowserRouter, Routes, Route } from 'react-router-dom'
-
-// pages and components
-import Home from './pages/Home';
-import Login from './pages/login';
-import AboutUs from './pages/AboutUs';
-import Navbar from './components/Navbar';
-import './index.css';
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/login";   
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <Router>
+      <nav style={{ padding: "20px", backgroundColor: "#0d15ff" }}>
+        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+        <Link to="/login" style={{ marginRight: "10px" }}>Login</Link>
+        <Link to="/about">About Us</Link>
+      </nav>
 
-        <Navbar/>
-
-        <div className="pages">
-          <Routes>
-             <Route path="/" element={<Home />} />
-            <Route 
-              path='/Homepage'
-              element={<Home />}
-            />
-          </Routes>
-        </div>
-
-        <div className="Login">
-          <Routes>
-            <Route 
-              path='/login'
-              element={<Login />}
-            />
-          </Routes>
-        </div>
-
-        <div className="AboutUs">
-          <Routes>
-            <Route 
-              path='/aboutUs'
-              element={<AboutUs />}
-            />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<AboutUs />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-

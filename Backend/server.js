@@ -1,16 +1,27 @@
-require('dotenv').config();
-const express = require('express')
+const express = require("express");
+const cors = require("cors");
 
-const notesRouter = require('./routes/notes');
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method);
-    next();
+// Temporary in-memory notes
+let notes = [
+  { _id: 1, title: "Gym", content: "Jogging @5 AM" },
+  { _id: 2, title: "Study", content: "React project" }
+];
+
+// GET all notes
+app.get("/api/notes", (req, res) => {
+  res.json(notes);
 });
 
-app.use('/api/notes', notesRouter);
+// POST new note
+app.post("/api/notes", (req, res) => {
+  const note = { _id: Date.now(), ...req.body };
+  notes.push(note);
+  res.json(note);
+});
 
-app.listen(process.env.PORT, () => [
-    console.log('Server is running on port 3000!!!', process.env.PORT)
-]);
+const PORT = 4000;
+app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
