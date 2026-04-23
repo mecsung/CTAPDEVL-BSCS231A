@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNotesContext } from '../hooks/useNotesContext';
 
 const NoteForm = () => {
+    const {dispatch} = useNotesContext();   
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
