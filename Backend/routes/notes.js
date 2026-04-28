@@ -2,13 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    //    res.send('Hello World');
-    res.json({
-        message: 'Hello World',
-        name: 'John Doe',
-        age: 67
-    });
-})
+const {
+    createNote,
+    deleteNote,
+    updateNote,
+    getNotes,
+    getNoteByID
+} = require('../controller/noteController');
+
+router.get('/', getNotes);
+router.get('/:id', getNoteByID);
+router.post('/', createNote);
+router.delete('/:id', deleteNote);
+router.patch('/:id', updateNote);
 
 module.exports = router;
