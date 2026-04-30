@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNotesContext } from '../hooks/useNotesContext';
 import NoteData from '../components/NoteData';
 import NoteForm from '../components/NoteForm';
+import NoteSearch from '../components/NoteSearch';
 import '../css/home.css';
  
 const Home = () => {
-    // const [notes, setNotes] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
     const { notes, dispatch } = useNotesContext()
  
     useEffect(() => {
@@ -20,7 +21,7 @@ const Home = () => {
         }
         fetchNotes()
  
-    }, []
+    }, [dispatch]
  
     );
  
@@ -35,6 +36,13 @@ const Home = () => {
 const addNoteToList = (newNote) => {
         dispatch({ type: 'CREATE_NOTE', payload: newNote });
     };
+
+    const filteredNotes = notes?.filter((note) => {
+        const query = searchTerm.toLowerCase();
+        const title = note.title?.toLowerCase() || '';
+        const content = note.content?.toLowerCase() || '';
+        return title.includes(query) || content.includes(query);
+    }) || [];
            
     return (
         <div className="home-container">
@@ -50,22 +58,23 @@ const addNoteToList = (newNote) => {
                     <p>The simplest way to keep track of your thoughts, tasks, and daily inspirations.</p>
 
                     <NoteForm onAddNote={addNoteToList} />
+                    <NoteSearch searchTerm={searchTerm} onSearch={setSearchTerm} />
 
-                    <div className="notes">
-                        {
-                            notes?.length > 0 ? (
-                                notes.map((note) => (
-                                    <NoteData key={note._id || note.id} note={note} />
-                                ))
-                            ) : (
-                                <p className="note-preview">No notes available yet.</p>
-                            )
-                        }
+                    <div className="notes-section">
+                        <h2>Existing Notes</h2>
+                        <div className="notes">
+                            {
+                                filteredNotes.length > 0 ? (
+                                    filteredNotes.map((note) => (
+                                        <NoteData key={note._id || note.id} note={note} />
+                                    ))
+                                ) : (
+                                    <p className="note-preview">No notes available yet.</p>
+                                )
+                            }
+                        </div>
                     </div>
-                    <div className="cta-buttons">
-                        <Link to="/Login" className="btn-primary">Get Started, It's Free!</Link>
-                        <Link to="/About" className="btn-secondary">Learn More</Link>
-                    </div>
+                 
                 </div>
             </section>
         </div>
