@@ -36,7 +36,7 @@ export const deleteNote = async (req, res) => {
     return res.status(404).json({ error: "Note not Found!" });
   }
 
-  res.status(200).json({ message: "Note Deleted Successfully" });
+  res.status(200).json(note);
 };
 
 export const updateNote = async (req, res) => {
@@ -53,5 +53,5 @@ export const updateNote = async (req, res) => {
     return res.status(404).json({ error: "Note not Found!" });
   }
 
-  res.status(200).json({ message: note });
+  res.status(200).json(note);
 };

@@ -1,11 +1,12 @@
 import "./Home.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NoteData } from "../components/NoteData.js";
 import { NoteForm } from "../components/NoteForm.js";
 import { useNotesContext } from "../hooks/useNotesContext.js";
 
 export default function Home() {
   const { state, dispatch } = useNotesContext();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -21,15 +22,25 @@ export default function Home() {
     fetchNotes();
   }, []);
 
+  const filteredNotes = state.notes?.filter((note) =>
+    note.title.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
     <div className="home">
       <div className="home-greetings">
         <h1>What's up homies!</h1>
         <h2>This is my first React Application</h2>
         <NoteForm />
+        <input
+          type="text"
+          placeholder="Search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
-      <NoteData notes={state.notes} />
+      <NoteData notes={filteredNotes} />
     </div>
   );
 }

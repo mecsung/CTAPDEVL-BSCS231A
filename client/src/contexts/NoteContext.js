@@ -8,13 +8,30 @@ const notesReducer = (state, action) => {
       return { ...state, notes: action.payload };
     case "CREATE_NOTE":
       return { ...state, notes: [action.payload, ...state.notes] };
+    case "DELETE_NOTE":
+      return {
+        notes: state.notes.filter((n) => n._id !== action.payload._id),
+      };
+    case "UPDATE_NOTE":
+      return {
+        ...state,
+        notes: state.notes.map((n) =>
+          n._id === action.payload._id ? action.payload : n,
+        ),
+      };
+    // Add to notesReducer
+    case "SET_SEARCH":
+      return { ...state, search: action.payload };
     default:
       return state;
   }
 };
 
 export const NotesContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(notesReducer, { notes: null });
+  const [state, dispatch] = useReducer(notesReducer, {
+    notes: null,
+    search: "",
+  });
 
   return (
     <NotesContext.Provider value={{ state, dispatch }}>
