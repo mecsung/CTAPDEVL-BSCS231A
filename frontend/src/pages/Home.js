@@ -3,12 +3,12 @@ import { useNotesContext } from "../hooks/useNotesContext";
 
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
+import NoteSearch from "../components/NoteSearch";
 
 const Home = () => {
-    const { dispatch, notes } = useNotesContext();
+    const { dispatch, notes, search } = useNotesContext();
     // const [notes, setNotes] = useState(null);
     
-
     useEffect(() => {
         const fetchNotes = async () => {
             const response = await fetch("/api/notes")
@@ -16,17 +16,27 @@ const Home = () => {
 
             if (response.ok) {
                 // setNotes(json)
-                dispatchEvent({ type: 'SET_NOTES', paylaod: json })
+                dispatch({ type: 'SET_NOTES', paylaod: json })
             }
         }
         fetchNotes()
     },[]);
 
+    const filteredNotes = notes && notes.filter((note) =>
+        note.title.toLowerCase().includes(search.toLowerCase()) ||
+        note.content.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
         <div className="home">
             <NoteForm />
+            <NoteSearch />
             <h1>What's up!</h1>
 
+            {filteredNotes && filteredNotes.map((note) => (
+                <NoteData key={note._id} note={note} />
+            ))}
+            
             <div className="notes">
             {notes && notes.map((note) => (
                 <NoteData key={note._id} note={note} />

@@ -3,8 +3,8 @@ import { useNotesContext } from "../hooks/useNotesContext";
 
 const NoteForm = () => {
     const { dispatch } = useNotesContext();
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
     const [error, setError] = useState(null);
 
 const handleSubmit = async (e) => {
@@ -12,19 +12,19 @@ const handleSubmit = async (e) => {
 
     const note = { title, content };
 
-    const response = await fetch("/api/notes", {
-        method: "POST",
+    const response = await fetch('/api/notes', {
+        method: 'POST',
         body: JSON.stringify(note),
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         }
     })
     const json = await response.json();
 
     if (response.ok){
-        setTitle("");
-        setContent("");
-        dispatch({ type: "CREATE_NOTE", payload: json });
+        setTitle('');
+        setContent('');
+        dispatch({ type: 'CREATE_NOTE', payload: json });
     }
     else{
         console.log(json.error);
