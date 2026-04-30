@@ -1,4 +1,4 @@
-import { Children, createContext } from "react";
+import { createContext } from "react";
 import { useReducer } from "react";
 
 export const NotesContext = createContext();
@@ -7,11 +7,28 @@ export const notesReducer = (state, action) => {
     switch (action.type) {
         case 'SET_NOTES':
             return {
+                ...state,
                 notes: action.payload
             }
         case 'CREATE_NOTE':
             return {
+                ...state,
                 notes: [action.payload, ...state.notes]
+            }
+        case 'DELETE_NOTE':
+            return {
+                ...state,
+                notes: state.notes.filter((n) => n._id !== action.payload._id)
+            }
+        case 'UPDATE_NOTE':
+            return {
+                ...state,
+                notes: state.notes.map((n) => n._id === action.payload._id ? action.payload : n)
+            }
+        case 'SET_SEARCH':
+            return {
+                ...state,
+                search: action.payload
             }
         default:
             return state
@@ -20,7 +37,8 @@ export const notesReducer = (state, action) => {
 
 export const NotesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(notesReducer, {
-        notes: null
+        notes: null,
+        search: ''
     })
 
     return (

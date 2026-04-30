@@ -5,7 +5,7 @@ const NoteForm = () => {
   const { dispatch } = useNotesContext();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [error] = useState(null);
+  const [error, setError] = useState(null);
  
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,8 +26,10 @@ const NoteForm = () => {
         if (response.ok) {
             setTitle("");
             setContent("");
+            setError(null);
             dispatch({ type: 'CREATE_NOTE', payload: json });
         } else {
+            setError(json.error || 'Error adding note');
             console.error('Error adding note:', json);
         }
     };
