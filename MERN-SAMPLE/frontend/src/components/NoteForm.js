@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNotesContext } from "../hooks/useNotesContext";
 
 const NoteForm = () => {
@@ -7,6 +7,15 @@ const NoteForm = () => {
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+
+    useEffect(() => {
+        if (success) {
+            const timer = setTimeout(() => {
+                setSuccess(null);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [success]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,10 +69,32 @@ const NoteForm = () => {
 
                     <button type="submit" className="btn-primary">Add Note</button>
 
-                    {success && <p className="form-message form-success">{success}</p>}
                     {error && <p className="form-message form-error">{error}</p>}
                 </form>
             </section>
+
+            {success && (
+                <div className="success-modal-backdrop" role="presentation" onClick={() => setSuccess(null)}>
+                    <div
+                        className="success-modal"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="success-modal-title"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <h3 id="success-modal-title" className="success-modal-title">
+                            {success}
+                        </h3>
+                        <button
+                            type="button"
+                            className="note-btn note-btn-primary"
+                            onClick={() => setSuccess(null)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }

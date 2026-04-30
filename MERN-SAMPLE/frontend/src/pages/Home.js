@@ -1,15 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNotesContext } from '../hooks/useNotesContext';
-
-import NoteData from "../components/NoteData";
-import NoteForm from "../components/NoteForm";
 
 const Home = () => {
     const navigate = useNavigate()
 
-    const { notes, dispatch } = useNotesContext()
+    const { dispatch } = useNotesContext()
 
     useEffect(() => {
         const fetchNotes = async () => {

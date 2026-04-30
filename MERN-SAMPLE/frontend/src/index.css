@@ -326,6 +326,39 @@ p {
   box-shadow: 0 0 0 2px rgba(196, 18, 47, 0.35);
 }
 
+/* Compact edit inputs used inside note cards */
+.note-edit-input {
+  width: 100%;
+  background: rgba(8, 15, 33, 0.82);
+  color: var(--ink);
+  border: 1px solid rgba(248, 251, 255, 0.18);
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+  margin-bottom: 0.45rem;
+}
+
+.note-edit-textarea {
+  width: 100%;
+  background: rgba(8, 15, 33, 0.82);
+  color: var(--ink);
+  border: 1px solid rgba(248, 251, 255, 0.18);
+  border-radius: 10px;
+  padding: 0.5rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  resize: vertical;
+}
+
+.note-edit-input:focus,
+.note-edit-textarea:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(15, 62, 168, 0.12);
+}
+
 .note-form .btn-primary {
   justify-self: start;
   margin-top: 0.4rem;
@@ -362,8 +395,45 @@ p {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
 }
 
-.notes-page-title {
+.notes-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.notes-page-title {
+  margin-bottom: 0;
+}
+
+.search-container {
+  width: min(340px, 100%);
+  justify-self: end;
+}
+
+.search-input {
+  width: 100%;
+  background: rgba(8, 15, 33, 0.88);
+  color: var(--ink);
+  border: 1px solid rgba(248, 251, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.78rem 1rem;
+  font-family: inherit;
+  font-size: 0.98rem;
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(196, 18, 47, 0.08);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(233, 239, 255, 0.68);
+}
+
+.search-input:focus {
+  border-color: rgba(248, 251, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(15, 62, 168, 0.25);
+  transform: translateY(-1px);
 }
 
 .notes-list {
@@ -434,8 +504,10 @@ p {
 .note-data {
   border: 1px solid rgba(248, 251, 255, 0.24);
   border-radius: 14px;
-  background: linear-gradient(140deg, rgba(8, 15, 33, 0.85), rgba(9, 28, 68, 0.72));
-  padding: 0.9rem 0.95rem;
+  background:
+    radial-gradient(circle at top right, rgba(196, 18, 47, 0.12), transparent 36%),
+    linear-gradient(140deg, rgba(8, 15, 33, 0.88), rgba(9, 28, 68, 0.76));
+  padding: 1rem 1.05rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
 }
 
@@ -446,4 +518,174 @@ p {
 
 .note-data p {
   margin-top: 0.4rem;
+}
+
+.note-actions {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.note-btn {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+.note-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.note-btn-update {
+  color: var(--ink);
+  background: linear-gradient(90deg, var(--spidey-blue), #2c6ef2);
+  box-shadow: 0 10px 18px rgba(15, 62, 168, 0.22);
+}
+
+.note-btn-delete {
+  color: var(--ink);
+  background: linear-gradient(90deg, var(--spidey-red), #ea294d);
+  box-shadow: 0 10px 18px rgba(196, 18, 47, 0.22);
+}
+
+.note-btn-cancel {
+  color: var(--ink);
+  background: rgba(8, 15, 33, 0.88);
+  border-color: rgba(248, 251, 255, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(15, 62, 168, 0.16);
+}
+
+.note-data-wrapper {
+  position: relative;
+}
+
+.delete-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(4, 8, 17, 0.82);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+}
+
+.delete-modal {
+  width: min(320px, calc(100% - 1rem));
+  border: 1px solid rgba(248, 251, 255, 0.24);
+  border-radius: 20px;
+  padding: 0.9rem 0.8rem 0.8rem;
+  background:
+    radial-gradient(circle at top, rgba(196, 18, 47, 0.18), transparent 38%),
+    linear-gradient(150deg, rgba(7, 13, 29, 0.96), rgba(10, 29, 69, 0.92));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  animation: modal-pop 0.2s ease-out both;
+}
+
+.delete-modal-kicker {
+  margin: 0 0 0.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #c9d7ff;
+  font-size: 0.6rem;
+}
+
+.delete-modal-title {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.delete-modal-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.success-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: transparent;
+  pointer-events: none;
+}
+
+.success-modal {
+  pointer-events: auto;
+  width: min(420px, 100%);
+  border: 1px solid rgba(196, 18, 47, 0.32);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  background:
+    radial-gradient(circle at top, rgba(139, 245, 183, 0.12), transparent 38%),
+    linear-gradient(150deg, rgba(7, 13, 29, 0.96), rgba(10, 29, 69, 0.92));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  animation: modal-pop 0.3s ease-out both;
+  text-align: center;
+}
+
+.success-modal-icon {
+  display: none;
+}
+
+.success-modal-title {
+  margin: 0 0 1.2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.note-btn-primary {
+  color: var(--ink);
+  background: linear-gradient(90deg, var(--spidey-blue), #2c6ef2);
+  box-shadow: 0 10px 18px rgba(15, 62, 168, 0.22);
+}
+
+@media (max-width: 720px) {
+  .notes-card-header {
+    flex-direction: column;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .delete-modal-actions {
+    flex-direction: column;
+  }
+
+  .delete-modal-actions .note-btn {
+    width: 100%;
+  }
 }
