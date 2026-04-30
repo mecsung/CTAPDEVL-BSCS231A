@@ -3,10 +3,11 @@ import { useNotesContext } from "../hooks/useNotesContext";
 
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
+import SearchNote from "../components/SearchNote";
 import "./Home.css";
 
 const Home = () => {
-  const { notes, dispatch } = useNotesContext();
+  const { dispatch, notes, search } = useNotesContext();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -21,17 +22,22 @@ const Home = () => {
     fetchNotes();
   }, [dispatch]);
 
+  const filteredNotes = notes && notes.filter((note) =>
+    note.title.toLowerCase().includes(search.toLowerCase()) ||
+    note.content.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="home">
-      <h1>Whats up homie</h1>
       <NoteForm />
 
-      <div className="notes">
-        {notes &&
-          notes.map((note) => (
-            <NoteData key={note._id} note={note} />
-          ))}
-      </div>
+      <SearchNote />
+
+      <h1>Whats up homie</h1>
+
+      {filteredNotes && filteredNotes.map((note) => (
+        <NoteData key={note._id} note={note} />
+      ))}
     </div>
   );
 };
