@@ -12,7 +12,7 @@ const NoteSearch = () => {
             <input type="text"
             value={search}
             onChange={handleSearch}
-            placeholder="Search notes..."
+            placeholder="  Search notes..."
             className="search-field"
             />
         </div>

@@ -4,6 +4,8 @@ const NoteData = ({ note }) => {
     const { dispatch } = useNotesContext();
 
     const handleDelete = async () => {
+        const isConfirmed = window.confirm("Are you sure you want to delete this note?");
+        if (!isConfirmed) return;
         const response = await fetch('/api/notes/' + note._id, {
             method: 'DELETE',
         });
@@ -40,8 +42,8 @@ const NoteData = ({ note }) => {
             <h2>{note.title}</h2>
             <p>{note._id}</p>
             <p>{note.content}</p>
-            <span onClick={handleDelete}>Delete</span>
-            <span onClick={handleUpdate}>Update</span>
+            <span className="delete-btn" onClick={handleDelete}>Delete</span>
+            <span className="update-btn" onClick={handleUpdate}>Update</span>
         </div>
     )
 }

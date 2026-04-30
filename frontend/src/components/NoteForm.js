@@ -12,11 +12,11 @@ const handleSubmit = async (e) => {
 
     const note = { title, content };
 
-    const response = await fetch('/api/notes', {
-        method: 'POST',
+    const response = await fetch("/api/notes", {
+        method: "POST",
         body: JSON.stringify(note),
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         }
     })
     const json = await response.json();
@@ -48,6 +48,7 @@ const handleSubmit = async (e) => {
                 onChange={(e) => setContent(e.target.value)}
             />
             <button>Add New Note</button>
+            {error && <div className="error">{error}</div>}
         </form>
     )
 }

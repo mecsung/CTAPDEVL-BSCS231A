@@ -11,14 +11,14 @@ const Home = () => {
     
     useEffect(() => {
         const fetchNotes = async () => {
-            const response = await fetch("/api/notes")
-            const json = await response.json()
+            const response = await fetch("/api/notes");
+            const json = await response.json();
 
             if (response.ok) {
                 // setNotes(json)
-                dispatch({ type: 'SET_NOTES', paylaod: json })
+                dispatch({ type: "SET_NOTES", payload: json });
             }
-        }
+        };
         fetchNotes()
     },[]);
 
@@ -37,11 +37,11 @@ const Home = () => {
                 <NoteData key={note._id} note={note} />
             ))}
             
-            <div className="notes">
+            {/* <div className="notes">
             {notes && notes.map((note) => (
                 <NoteData key={note._id} note={note} />
             ))}
-            </div>
+            </div> */}
         </div>
     )
 
