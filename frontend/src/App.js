@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/AboutUs";
 import Login from "./pages/Login";
 
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
           </Routes>
         </main>
 
-        <Footer />        import Navbar from './components/Navbar';
+        <Footer />
       </div>
     </BrowserRouter>
   );
