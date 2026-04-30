@@ -3,9 +3,10 @@ import { useNotesContext } from "../hooks/useNotesContext";
 
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
+import NoteSearch from "../components/NoteSearch";
 
 const Home = () => {
-    const { notes, dispatch } = useNotesContext(); 
+    const { notes, dispatch, search } = useNotesContext();
 
     useEffect(() => {
         const fetchNotes = async () => {
@@ -21,15 +22,21 @@ const Home = () => {
 
     const notesArray = Array.isArray(notes) ? notes : [];
 
+    const filteredNotes = notes && notes.filter((note) =>
+        note.title.toLowerCase().includes(search.toLowerCase()) ||
+        note.content.toLowerCase().includes(search.toLowerCase())
+    )
+
     return (
         <div className="home">
             <h1>Welcome to Notes System</h1>
             <p>Your modern, secure, and easy-to-use note-taking platform for National University students.</p>
             <NoteForm />
+            <NoteSearch />
 
             <div className="notes">
-                {notes && notes.map((note) => (
-                <NoteData key={note._id} note={note} />
+                {filteredNotes && filteredNotes.map((note) => (
+                    <NoteData key={note._id} note={note} />
                 ))}
             </div>
         </div>
