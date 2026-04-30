@@ -40,7 +40,7 @@ const upNote = async (req, res) => {
     if (!notes) {
         return res.status(404).json({ error: 'boi wala' });
     }
-    res.status(200).json({ message: 'Note updated note successfully!' });
+    res.status(200).json(notes);
 }
 
 // Delete a note
@@ -51,7 +51,7 @@ const delNote = async (req, res) => {
     if (!notes) {
         return res.status(404).json({ error: 'boi wala' });
     }
-    res.status(200).json({ message: 'Note deleted successfully!' });
+    res.status(200).json(notes);
 }
 
 

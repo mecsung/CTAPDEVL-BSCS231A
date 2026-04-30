@@ -1,11 +1,14 @@
 import { useEffect } from "react";
+import { useNotesContext } from "../hooks/useNotesContext";
+
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
-import { useNotesContext } from "../hooks/useNotesContext";
+import SearchNote from "../components/SearchNote";
+
 
 const Home = () => {
     // const [notes, setNotes] = useState();
-    const { notes, dispatch } = useNotesContext();
+    const { notes, dispatch, search } = useNotesContext();
 
     useEffect(() => {
         const fetchNotes = async () => {
@@ -19,8 +22,17 @@ const Home = () => {
         };
 
         fetchNotes();
-    }, []);
+    }, [dispatch]);
 
+
+    const searchTerm = (search ?? "").toLowerCase();
+
+    const filteredNotes = (notes ?? []).filter((note) => {
+        const title = (note.title ?? "").toLowerCase();
+        const content = (note.content ?? "").toLowerCase();
+
+        return title.includes(searchTerm) || content.includes(searchTerm);
+    });
 
     return (
         <div className="home">
@@ -30,16 +42,22 @@ const Home = () => {
             </section>
 
             <div className="home-layout">
-                <NoteForm />
+                <div className="home-layout__sidebar">
+                    <NoteForm />
+                </div>
 
                 <div className="notes-panel">
+                    <div className="notes-panel__search">
+                        <SearchNote />
+                    </div>
+
                     <div className="notes-panel__header">
                         <h2>Your Notes</h2>
                         <p>Saved entries appear here in reverse chronological order.</p>
                     </div>
 
                     <div className="notes">
-                        {notes && notes.map((note) => (
+                        {filteredNotes && filteredNotes.map((note) => (
                             <NoteData key={note._id} note={note} />
                         ))}
                     </div>
