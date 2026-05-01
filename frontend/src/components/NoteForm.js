@@ -36,7 +36,7 @@ const NoteForm = () => {
 
   return (
     <form className='form-create' onSubmit={handleSubmit}>
-      <h3>Add New Note</h3>
+      <h3>ADD NEW NOTES</h3>
       <label>Note Title:</label>
       <input
         type="text" 

@@ -3,46 +3,53 @@ import { useNotesContext } from "../hooks/useNotesContext";
 
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
+import SearchNote from "../components/SearchNote";
 
 const Home = () => {
-  // const [notes, setNotes] = useState(null)
-  const { notes, dispatch } = useNotesContext();
+  const { notes = [], dispatch, search } = useNotesContext();
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const response = await fetch("/api/notes")
-      const json = await response.json() //its okay to be json for the server side
+      const response = await fetch("/api/notes");
+      const json = await response.json();
 
-      if (response.ok) { 
-        dispatch({ type: "SET_NOTES", payload: json }); //to parce it for the client side
+      if (response.ok) {
+        dispatch({ type: "SET_NOTES", payload: json });
       }
     };
 
     fetchNotes();
-  }, [dispatch]); //display regardless none;
+  }, [dispatch]);
 
-    return (
-        <div className = "home">
-            <NoteForm />
-            <h1>LEZZZ GOOO!!!</h1>
-            <h2>Welcome to the Home Page</h2>
-            <h3>:3</h3>
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(search.toLowerCase()) ||
+    note.content.toLowerCase().includes(search.toLowerCase())
+  );
 
-            {/* <button>Click Me</button> */}
+  return (
+    <div className="home">
+      <h1>LEZZZ GOOO!!!</h1>
+      <h2>Welcome to the Home Page</h2>
 
-            <div className="notes">
-              {notes && notes.map((note) => (
-                //call the NoteData component and pass the note as
-                <NoteData key={note._id} note={note} /> //{note} came from the NoteData
-            //     <p key={note._id}>
-            //         {note.title} 
-            //         <br/> 
-            //         {note.content}</p> //key yung magseset ng bagong loop
-              ))}
-            </div>
+      <SearchNote />
+      
+      <div className="home-layout">
+        <div className="home-left">
+          <div className="notes">
+            {filteredNotes.map((note) => (
+              <NoteData key={note._id} note={note} />
+            ))}
+          </div>
         </div>
-    );
-};
 
+        <div className="home-right">
+          <NoteForm />
+        </div>
+      </div>
+
+
+    </div>
+  );
+};
 
 export default Home;
