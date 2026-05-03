@@ -38,8 +38,10 @@ const NoteData = ({ note }) => {
         <div className="note-data">
             <h2>{note.title}</h2>
             <p><strong>Content: </strong>{note.content}</p>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleUpdate}>Update</button>
+            <div className="note-actions">
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleUpdate}>Update</button>
+            </div>
         </div>
     )
 }
