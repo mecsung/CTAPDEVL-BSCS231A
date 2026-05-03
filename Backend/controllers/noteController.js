@@ -40,6 +40,7 @@ const deleteNote = async (req, res) => {
     if (!note){
         return res.status(404).json({error: "Note not found."});
     }
+    
     res.json({ message: "Note deleted successfully." });
 };
 

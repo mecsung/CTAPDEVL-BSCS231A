@@ -2,11 +2,12 @@ import "../components/button.css";
 import "./home.css";
 import NoteData from "../components/noteData";
 import NoteForm from "../components/noteForm";
+import SearchNote from "../components/SearchNote";
 import { useEffect } from "react";
 import { useNotesContext } from "../hooks/useNotesContext";
 
 const Home = () => {
-    const { notes, dispatch } = useNotesContext();
+    const { notes, dispatch, search } = useNotesContext();
 
     useEffect(() => {
         const fetchNotes = async () => {
@@ -27,6 +28,7 @@ const Home = () => {
                 <div className="form-card">
                     <h2 className="section-title">Paghimo og Bag-ong Nota</h2>
                     <NoteForm />
+                    <SearchNote />
                 </div>
             </section>
 
