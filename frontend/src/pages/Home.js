@@ -53,6 +53,7 @@ import { useNotesContext } from '../hooks/useNotesContext';
 
 import NoteData from '../components/NoteData';
 import NoteForm from '../components/NoteForm';
+import SearchNote from '../components/SearchNote';
 
 const Home = () => {
 
@@ -64,7 +65,7 @@ const Home = () => {
     const [notes, setNotes] = useState(null)
     */
 
-    const { notes, dispatch } = useNotesContext()
+    const { notes, dispatch, search } = useNotesContext();
 
     useEffect(() => {
         const fetchNotes = async () => {
@@ -86,7 +87,13 @@ const Home = () => {
 
         // The [] means run this effect only once when the components first loads
         // We turned it into comment because of React Context
-    },/* [] */)
+    },/* [] */);
+
+    // Filter for searching
+    const filteredNotes = notes && notes.filter((note) =>
+        note.title.toLowerCase().includes(search.toLowerCase()) ||
+        note.content.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
         <div className="home">
@@ -94,15 +101,21 @@ const Home = () => {
 
             <NoteForm />
 
-            <div className="notes">
+            <SearchNote />
 
+            <div className="notes">
+                
                 {/* && is not the AND! When there's a note, 
                 map the array and render each note */}
-                {notes && notes.map((note) => (
+                {/* notes && notes.map((note) => (
                     
-                    {/* Render each note by passing it as a prop to the NoteData component*/},
-                    <NoteData key={note._id} note={note}/>
-                ))}
+                    {/* Render each note by passing it as a prop to the NoteData component*/}
+                    {/* <NoteData key={note._id} note={note}/> 
+                ))} */}
+
+                {filteredNotes && filteredNotes.map((note) => (
+                    <NoteData key={note._id} note={note} />
+                ))} 
             </div>
         </div>   
     );

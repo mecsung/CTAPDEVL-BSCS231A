@@ -91,10 +91,26 @@ const updateSingleNote = async (req, res) => {
 
 //#endregion
 
+//#region 3
+
+const deleteNote = async (req, res) => {
+    const { id } = req.params;
+    const note = await Note.findByIdAndDelete(id);
+
+    if (!note) {
+        return res.status(404).json({ error: 'Note not found' });
+    }
+
+    res.status(200).json(note);
+}
+
+//#endregion
+
 module.exports = {
     createNote,
     getAllNotes,
     getSingleNote,
     deleteSingleNote,
-    updateSingleNote
+    updateSingleNote,
+    deleteNote
 };

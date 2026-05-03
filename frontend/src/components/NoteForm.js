@@ -38,7 +38,7 @@ const NoteForm = () => {
             console.log('New note added:', json);
             
             // dispatch was added during the coding of React Context
-            dispatch({ type: 'CREATE_NOTE', payload: json })
+            dispatch({ type: 'CREATE_NOTE', payload: json.note })
         }
         else {
             setError(json.error);
