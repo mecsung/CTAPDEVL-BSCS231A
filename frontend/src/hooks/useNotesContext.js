@@ -1,5 +1,5 @@
 import { NotesContext } from "../context/NotesContext";
-import { use, useContext } from "react";
+import { useContext } from "react";
 
 export const useNotesContext = () => {
     const context = useContext(NotesContext)

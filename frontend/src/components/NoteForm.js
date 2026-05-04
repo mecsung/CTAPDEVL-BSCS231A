@@ -5,7 +5,7 @@ const NoteForm = () => {
   const { dispatch } = useNotesContext();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
  
   const handleSubmit = async (e) => {
     e.preventDefault();

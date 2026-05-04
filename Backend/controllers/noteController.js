@@ -38,7 +38,9 @@ const deleteNote = async (req,res) => {
     if( !note ){
         return res.status(404).json({ error: 'Note not found' });
     }
-    res.status(200).json({message: `Note deleted successfully!`});
+    
+    // res.status(200).json({message: `Note deleted successfully!`});
+    res.status(200).json(note);
 }
 
 // Update an note by ID
@@ -51,7 +53,7 @@ const updateNote = async (req,res) => {
     if( !note ){
         return res.status(404).json({ error: 'Note not found' });
     }
-    res.status(200).json({note});
+    res.status(200).json(note);
 }
 
 module.exports = {

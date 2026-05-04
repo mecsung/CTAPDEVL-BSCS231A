@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const notesRoutes = require('./routes/notes.js');
+const userRouter = require('./routes/user.js');
 
 // Create an instance of the Express application
 const app = express();
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // Use the noutes routes
 app.use('/api/notes', notesRoutes);
+app.use('/api/user', userRouter);
 
 mongoose.connect(process.env.MONGO_URI).
     then(() => {
