@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+
 const notesRoutes = require('./routes/notes');
+const userRouter = require('./routes/users');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -17,6 +19,7 @@ app.use((req, res, next) => {
 
 // 3. API Routes
 app.use('/api/notes', notesRoutes);
+app.use('/api/user', userRouter);
 
 // 4. Base Route
 app.get('/', (req, res) => {
