@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const notesRouter = require('./routes/notes');
+const userRouter = require('./routes/users');
 const app = express();
 
 //middleware
@@ -14,6 +15,7 @@ app.use((req, res, next) => {
 
 // route to notes.js
 app.use('/api/notes', notesRouter);
+app.use('/api/users', userRouter);
 
 // connect to MongoDB and start the server
 mongoose.connect(process.env.MONGO_URI)
