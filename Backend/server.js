@@ -4,7 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
+const dns = require('dns');
 const notesRoutes = require("./routes/notes");
+const userRoutes = require("./routes/user");
 const Note = require("./models/noteModels");
 
 //middleware
@@ -18,7 +20,9 @@ app.use((req, res, next) => {
 
 //route to notes.js
 app.use('/api/notes', notesRoutes);
+app.use('/api/user', userRoutes);
 
+dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
