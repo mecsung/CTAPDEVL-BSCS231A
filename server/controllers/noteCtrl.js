@@ -16,6 +16,8 @@ const getNotebyId = async (req, res) => {
     }
     res.status(200).json(notes);
 }
+
+
 // Create a note
 const createNote = async (req, res) => {
 

@@ -2,6 +2,10 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose'); //MongoDB require
+
+const notesRouter = require('./routes/notes');
+const userRouter = require('./routes/user');
+
 const ToNotes = require('./routes/notes'); //Routing
 const app = express();
 const dns = require('dns');
@@ -13,6 +17,11 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use('/api/notes', ToNotes);
+
+//ROUTES TO NOTES.JS
+app.use('/api/notes', notesRouter);
+app.use('/api/users', userRouter);
+
 
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
