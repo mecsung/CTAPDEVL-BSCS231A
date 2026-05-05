@@ -113,3 +113,11 @@ mongoose.connect(process.env.MONGO_URI)
     });
     
 //#endregion
+
+//#region 7
+
+const userRouter = require('./routes/user');
+
+app.use('/api/user', userRouter);
+
+//#endregion
