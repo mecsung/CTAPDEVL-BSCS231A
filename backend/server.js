@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const notesRouter = require('./routes/notes');  
+const userRouter = require('./routes/user');
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/notes', notesRouter);
-
+app.use('/api/user', userRouter);
 // app.get('/', (req, res) => {
 //   res.send('Hello World!');
 // });
