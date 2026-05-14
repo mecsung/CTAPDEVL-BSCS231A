@@ -1,3 +1,4 @@
+
 const Landing = () => {
     return (
         <div className="landing">
@@ -10,7 +11,6 @@ const Landing = () => {
         </div>
     );
 }
-
 
 export default Landing;
 

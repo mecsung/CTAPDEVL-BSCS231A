@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
+import Signup from './pages/Signup';
 import About from './pages/About';
 import Navbar from './components/navbar';
 
@@ -12,8 +13,12 @@ function App() {
         <div className="pages">
           <Routes>
             <Route
-              path='/'
+              path='/login'
               element={<Landing />}
+            />
+            <Route
+              path='/signup'
+              element={<Signup />}
             />
             <Route
               path='/Home'

@@ -46,4 +46,20 @@ userSchema.statics.signup = async function(email, password) {
 
 }
 
+userSchema.statics.login = async function (email, password){
+    if (!email || !password){
+        throw Error('Lagyan mo lahat');
+    }
+    const user = await this.findOne({ email });
+    if (!user){
+        throw Error('Bawal ung email mo');
+    }
+    const match = await bcrypt.compare(password, user.password);
+    if (!match){
+        throw Error('Invalid username or password').message;
+    }
+
+    return user
+}
+
 module.exports = mongoose.model('User', userSchema);
