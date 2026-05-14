@@ -7,25 +7,25 @@ import { useNotesContext } from '../hooks/useNotesContext';
 
 
 const Homepage = () => {
-    const { notes, dispatch, search } = useNotesContext();
-
-    useEffect(() => {
-        const fetchNotes = async () => {
-            const response = await fetch("/api/notes")
-            const json = await response.json()
-
-            if (response.ok) {
-                dispatch({ type: 'SET_NOTES', payload: json })
-            }
-        }
-
-        fetchNotes()
-    }, [dispatch])
-
-    const filteredNotes = notes && notes.filter((note) =>
-        note.title.toLowerCase().includes(search.toLowerCase()) ||
-        note.content.toLowerCase().includes(search.toLowerCase())
-    );
+  const { notes = [], dispatch, search } = useNotesContext();
+ 
+  useEffect(() => {
+    const fetchNotes = async () => {
+      const response = await fetch("/api/notes");
+      const json = await response.json();
+ 
+      if (response.ok) {
+        dispatch({ type: "SET_NOTES", payload: json });
+      }
+    };
+ 
+    fetchNotes();
+  }, [dispatch]);
+ 
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(search.toLowerCase()) ||
+    note.content.toLowerCase().includes(search.toLowerCase())
+  );
 
     return (
         <div className="home">
