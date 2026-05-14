@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
+import Signup from './pages/Signup';
 import Login from './pages/Login';
 import About from './pages/About';
 import Navbar from './components/Navbar';
@@ -14,19 +15,12 @@ function App() {
 
         <div className="pages">
           <Routes>
-            <Route
-              path="/About"
-              element={<About />}
-            />
-            <Route
-              path="/login"
-              element={<Login />}
-            />
-            <Route
-              path="/"
-              element={<Home />}
-            />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
+
         </div>
 
         <Footer />
