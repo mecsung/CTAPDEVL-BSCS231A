@@ -19,6 +19,9 @@ const Navbar = () => {
           <NavLink to="/login">
             <Button variant="primary">Login</Button>
           </NavLink>
+          <NavLink to="/signup">
+            <Button variant="primary">Signup</Button>
+          </NavLink>
         </nav>
       </div>
     </header>
