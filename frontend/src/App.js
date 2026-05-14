@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Router, Routes} from 'react-router-dom';
 import Home from './pages/Home';
+import Login from './pages/Signup';
 import Login from './pages/Login';
 import About from './pages/About';
 import Navbar from './components/Navbar';
@@ -19,6 +20,10 @@ function App() {
           />
           <Route
             path="/login"
+            element={<Login />}
+          />
+          <Route
+            path="/signup"
             element={<Login />}
           />
           <Route
