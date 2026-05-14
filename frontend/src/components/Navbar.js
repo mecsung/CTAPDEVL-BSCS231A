@@ -16,6 +16,7 @@ const Navbar = () => {
                 <nav>
                     <li><FontAwesomeIcon icon={faHouse} className="home-icon" /><Link to= '/'>Home</Link></li>
                     <li><FontAwesomeIcon icon={faUser} className="user-icon" /><Link to= '/login'>Login</Link></li>
+                    <li><FontAwesomeIcon icon={faUser} className="user-icon" /><Link to= '/signup'>Signup</Link></li>
                     <li><FontAwesomeIcon icon={faCircleInfo} className="info-icon" /><Link to= '/about'>About</Link></li>
                 </nav>
             </div>
