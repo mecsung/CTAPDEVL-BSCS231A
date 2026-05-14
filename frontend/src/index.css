@@ -12,15 +12,18 @@ body {
 
 /* MAIN CONTAINER (Hogwarts parchment vibe) */
 .container {
-  width: 80%;
-  margin: 100px auto 80px auto;
+  width: 50%;
   padding: 25px;
+  margin: 0 auto 40px auto;
+
+  position: relative;
+  top: 120px; /* pushes it down from fixed header */
+
   background: linear-gradient(145deg, #1a1633, #0f0c1f);
   border: 2px solid #bfa130;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(191, 161, 48, 0.3);
 }
-
 /* TITLE */
 .page-title {
   font-size: 32px;
