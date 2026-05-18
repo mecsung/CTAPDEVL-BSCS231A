@@ -15,7 +15,7 @@ const Navbar = () => {
                 <div className="brand">
                     <p className="brand-tag">Not just notes… amazing notes</p>
                     <h1>
-                        <NavLink to={user ? '/notes' : '/'} className="brand-link">
+                        <NavLink to={user ? '/home' : '/'} className="brand-link">
                             Spidey Notes
                         </NavLink>
                     </h1>
