@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from '../hooks/useAuthContext';
  
  const NoteData = ({ note }) => {
     const { dispatch } = useNotesContext();
+    const { user } = useAuthContext();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState('');
@@ -16,8 +18,15 @@ import { useNotesContext } from "../hooks/useNotesContext";
     }, [isEditing, note.title, note.content]);
 
     const handleDelete = async () => {
+        if (!user) {
+            return;
+        }
+
         const response = await fetch(`/api/notes/${note._id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
         });
         const data = await response.json();
         console.log(data);
@@ -33,10 +42,15 @@ import { useNotesContext } from "../hooks/useNotesContext";
     }
 
     const handleSave = async () => {
+        if (!user) {
+            return;
+        }
+
         const response = await fetch('/api/notes/' + note._id, {
             method: 'PATCH',
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${user.token}`
             },
             body: JSON.stringify({ title: editTitle, content: editContent })
         });

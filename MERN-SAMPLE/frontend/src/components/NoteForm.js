@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const NoteForm = () => {
     const {dispatch } = useNotesContext()
+    const { user } = useAuthContext();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
@@ -22,12 +24,18 @@ const NoteForm = () => {
         setError(null);
         setSuccess(null);
 
+        if (!user) {
+            setError('You must be logged in to add a note.');
+            return;
+        }
+
         const note = { title, content };
         const response = await fetch('/api/notes', {
             method: 'POST',
             body: JSON.stringify(note),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`
             }
         });
         const json = await response.json();

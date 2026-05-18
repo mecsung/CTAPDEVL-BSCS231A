@@ -2,16 +2,26 @@ import { useNavigate } from "react-router-dom";
 
 import { useEffect } from 'react';
 import { useNotesContext } from '../hooks/useNotesContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Home = () => {
     const navigate = useNavigate()
 
     const { dispatch } = useNotesContext()
+    const { user } = useAuthContext();
 
     useEffect(() => {
         const fetchNotes = async () => {
+            if (!user) {
+                return;
+            }
+
             try {
-                const response = await fetch('/api/notes');
+                const response = await fetch('/api/notes', {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                });
                 const json = await response.json();
 
                 if (response.ok) {
@@ -23,7 +33,7 @@ const Home = () => {
         }
         fetchNotes()
 
-    }, []);
+    }, [dispatch, user]);
 
     return (
         <main className="page-shell home-page">

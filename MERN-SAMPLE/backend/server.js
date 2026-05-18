@@ -4,6 +4,7 @@ const express = require('express');
 const dns = require('dns'); // Lets Node use custom DNS resolvers.
 const mongoose = require('mongoose');
 const notesRoutes = require('./routes/notes');
+const userRoutes = require('./routes/user');
 
 // Create an instance of the Express application
 const app = express();
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 // Use the notes routes
 app.use('/api/notes', notesRoutes);
+app.use('/api/user', userRoutes);
 
 // Force reliable DNS resolvers for Atlas SRV lookups on restricted networks.
 dns.setServers(['8.8.8.8', '1.1.1.1']); // Uses public DNS to resolve Atlas SRV records.

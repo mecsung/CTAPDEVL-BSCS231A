@@ -5,11 +5,16 @@ const Schema = mongoose.Schema;
 const noteSchema = new Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     content: {
         type: String,
-        require: true
+        required: true
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
 }, {timestamps: true}
 );
