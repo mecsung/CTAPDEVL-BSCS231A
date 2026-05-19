@@ -4,7 +4,11 @@ const { createNote,
     upNote,
     getNote,
     getNotebyId } = require('../controllers/noteCtrl');
+    
+const requireAuth = require('../middleware/requireAuth')
 const router = express.Router();
+
+router.use(requireAuth);
 
 //GET notes
 router.get('/', getNote);
@@ -14,7 +18,6 @@ router.get('/:id', getNotebyId);
 
 //POST
 router.post('/', createNote);
-
 
 //UPDATE
 router.patch('/:id', upNote);
