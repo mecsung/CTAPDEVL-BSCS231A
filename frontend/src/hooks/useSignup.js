@@ -10,24 +10,28 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('/api/users/signup', {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email, password})
-        })
+        try {
+            const response = await fetch('/api/user/signup', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email, password})
+            })
 
-        const json = await response.json()
+            const json = await response.json().catch(() => null)
 
-        if(!response.ok) {
-            setIsLoading(false)
-            setError(json.error)
-        }
+            if(!response.ok) {
+                setError(json?.error || 'Signup failed. Please check that the server is running and try again.')
+                setIsLoading(false)
+                return
+            }
 
-        if(response.ok) {
             localStorage.setItem('user', JSON.stringify(json))
 
             dispatch({type: "LOGIN", payload: json})
 
+            setIsLoading(false)
+        } catch (err) {
+            setError('Unable to reach the server. Please make sure the backend is running.')
             setIsLoading(false)
         }
     }

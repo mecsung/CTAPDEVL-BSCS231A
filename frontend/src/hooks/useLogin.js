@@ -10,26 +10,30 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('/api/users/login', {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email, password})
-        })
+        try {
+            const response = await fetch('/api/user/login', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email, password})
+            })
 
-        const json = await response.json()
+            const json = await response.json().catch(() => null)
 
-        if(!response.ok) {
-            setIsLoading(false)
-            setError(json.error)
-        }
+            if(!response.ok) {
+                setError(json?.error || 'Login failed. Please check that the server is running and try again.')
+                setIsLoading(false)
+                return
+            }
 
-        if(response.ok) {
             // save user to local storage
             localStorage.setItem('user', JSON.stringify(json))
 
             // update auth context
             dispatch({type: "LOGIN", payload: json})
 
+            setIsLoading(false)
+        } catch (err) {
+            setError('Unable to reach the server. Please make sure the backend is running.')
             setIsLoading(false)
         }
     }
