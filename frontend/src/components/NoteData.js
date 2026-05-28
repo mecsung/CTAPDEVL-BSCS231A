@@ -1,8 +1,10 @@
 import { useNotesContext } from '../hooks/useNotesContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 import './NoteData.css';
 
 const NoteData = ({ note }) => {
   const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
 
   const handleUpdate = async () => {
     const title = prompt('Enter new title:', note.title);
@@ -14,7 +16,8 @@ const NoteData = ({ note }) => {
     const response = await fetch('/api/notes/' + note._id, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify({ title, content })
     });
@@ -28,7 +31,10 @@ const NoteData = ({ note }) => {
 
   const handleDelete = async () => {
     const response = await fetch('/api/notes/' + note._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     });
     const data = await response.json();
     console.log(data);

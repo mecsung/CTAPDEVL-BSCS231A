@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const NoteForm = () => {
   const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState(null);
@@ -17,6 +19,7 @@ const NoteForm = () => {
       body: JSON.stringify(note),
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token}`
       },
     });
 

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 import NoteData from "../components/NoteData";
 import NoteForm from "../components/NoteForm";
@@ -8,10 +9,15 @@ import "./Home.css";
 
 const Home = () => {
   const { dispatch, notes, search } = useNotesContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const response = await fetch("/api/notes");
+      const response = await fetch("/api/notes", {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       const json = await response.json();
 
       if (response.ok) {
@@ -19,8 +25,10 @@ const Home = () => {
       }
     };
 
-    fetchNotes();
-  }, [dispatch]);
+    if (user) {
+      fetchNotes();
+    }
+  }, [dispatch, user]);
 
   const filteredNotes = notes && notes.filter((note) =>
     note.title.toLowerCase().includes(search.toLowerCase()) ||
