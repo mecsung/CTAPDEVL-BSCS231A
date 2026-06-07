@@ -1,14 +1,18 @@
 const express = require('express');
-
+const Note = require('../models/nodeModel');
 const router = express.Router();
+const {createNote, getAllNote, getSingleNote, deleteNote, updateNote} 
+= require('../controller/noteController');
 
-router.get('/', (req, res) => {
-    //    res.send('Hello World');
-    res.json({
-        message: 'Hello World',
-        name: 'John Doe',
-        age: 67
-    });
-})
+//display
+router.get('/', getAllNote);
+//create   
+router.post('/', createNote);
+//Delete   
+router.delete('/:id', deleteNote);
+//Update 
+router.patch('/:id', updateNote);
+//get a single note
+router.get('/:id', getSingleNote);
 
 module.exports = router;
