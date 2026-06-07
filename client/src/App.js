@@ -13,6 +13,10 @@ function App() {
         <div className="pages">
           <Routes>
             <Route
+              path='/'
+              element={<Landing />}
+            />
+            <Route
               path='/login'
               element={<Landing />}
             />
